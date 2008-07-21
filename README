@@ -1,1 +1,11 @@
-Initial push for rainbow
+== Rainbow
+
+=== About
+
+It's!
+
+=== Usage
+
+  require 'rainbow'
+  puts "this is red".foreground(:red)
+

@@ -1,6 +1,13 @@
-Gem::Specification.new do |s|
+require 'rubygems'
+require 'rake'
+require 'rake/gempackagetask'
+
+task :default => [:repackage]
+
+spec = Gem::Specification.new do |s|
    s.name = %q{rainbow}
    s.version = "1.0"
+   s.platform = Gem::Platform::RUBY
    s.date = %q{2008-07-21}
    s.authors = ["Marcin Kulik"]
    s.email = %q{sikkill@gmail.com}
@@ -8,6 +15,11 @@ Gem::Specification.new do |s|
    s.homepage = %q{http://www.5dollarwhitebox.org/}
    s.description = %q{ParseConfig provides simple parsing of standard *nix style config files.}
    s.files = [ "README", "Changelog", "LICENSE", "lib/rainbow.rb", "test/rainbow_test.rb" ]
+   s.has_rdoc = true
    s.rubyforge_project = "rainbow"
 end
+
+Rake::GemPackageTask.new(spec) do |pkg| 
+  pkg.need_tar = true 
+end 
 

@@ -1,29 +1,20 @@
 
 module Sickill
   module Rainbow
-    FOREGROUNDS = { 
-      :black => 30,
-      :red => 31,
-      :green => 32,
-      :yellow => 33,
-      :blue => 34,
-      :magenta => 35,
-      :cyan => 36,
-      :white => 37,
-      :default => 39,
+    
+    TERM_COLORS = { 
+      :black => 0,
+      :red => 1,
+      :green => 2,
+      :yellow => 3,
+      :blue => 4,
+      :magenta => 5,
+      :cyan => 6,
+      :white => 7,
+      :default => 9,
     }
-    BACKGROUNDS = {
-      :black => 40,
-      :red => 41,
-      :green => 42,
-      :yellow => 43,
-      :blue => 44,
-      :magenta => 45,
-      :cyan => 46,
-      :white => 47,
-      :default => 49,
-    }
-    EFFECTS = {
+    
+    TERM_EFFECTS = {
       :reset => 0,
       :bright => 1,
       :italic => 3,
@@ -33,72 +24,73 @@ module Sickill
       :hide => 8,
     }
     
+    # Sets foreground color if this text.
   	def foreground(color)
       color = color.to_sym
-      raise ArgumentError.new("Unknown color, valid colors: #{FOREGROUNDS.keys.join(', ')}") unless FOREGROUNDS.keys.include?(color)
-      wrap(FOREGROUNDS[color])
+      validate_color(color)
+      wrap_with_code(TERM_COLORS[color] + 30)
   	end
+    alias_method :color, :foreground
+    alias_method :colour, :foreground
 
+    
+    # Sets background color of this text.
     def background(color)
       color = color.to_sym
-      raise ArgumentError.new("Unknown color, valid colors: #{BACKGROUNDS.keys.join(', ')}") unless BACKGROUNDS.keys.include?(color)
-      wrap(BACKGROUNDS[color])
+      validate_color(color)
+      wrap_with_code(TERM_COLORS[color] + 40)
     end
     
+    # Resets terminal to default colors/backgrounds.
+    #
+    # It shouldn't be needed to use this method because all methods append terminal reset code to end of string.
     def reset
-      wrap(EFFECTS[:reset])
+      wrap_with_code(TERM_EFFECTS[:reset])
     end
     
+    # Turns on bright/bold for this text.
     def bright
-      wrap(EFFECTS[:bright])
+      wrap_with_code(TERM_EFFECTS[:bright])
     end
 
+    # Turns on italic style for this text (not well supported by terminal emulators).
     def italic
-      wrap(EFFECTS[:italic])
+      wrap_with_code(TERM_EFFECTS[:italic])
     end
     
+    # Turns on underline decoration for this text.
     def underline
-      wrap(EFFECTS[:underline])
+      wrap_with_code(TERM_EFFECTS[:underline])
     end
 
+    # Turns on blinking attribute for this text (not well supported by terminal emulators).
     def blink
-      wrap(EFFECTS[:blink])
+      wrap_with_code(TERM_EFFECTS[:blink])
     end
 
+    # Inverses current foreground/background colors.
     def inverse
-      wrap(EFFECTS[:inverse])
+      wrap_with_code(TERM_EFFECTS[:inverse])
     end
 
+    # Hides this text (set its color to the same as background).
     def hide
-      wrap(EFFECTS[:hide])
+      wrap_with_code(TERM_EFFECTS[:hide])
     end
 
     protected
-    def wrap(code)
+    def wrap_with_code(code) #:nodoc:
       out = self
       match = out.match(/^(\e\[([\d;]+)m)*/)
       out.insert(match.end(0), "\e[#{code}m")
       out.concat("\e[0m") unless out =~ /\e\[0m$/
       out
     end
+    
+    def validate_color(color) #:nodoc:
+      raise ArgumentError.new("Unknown color, valid colors: #{TERM_COLORS.keys.join(', ')}") unless TERM_COLORS.keys.include?(color)
+    end
   end
 end
 
 String.send(:include, Sickill::Rainbow)
-
-#puts "abc".foreground(:red).foreground(:blue)
-
-# puts "jola".foreground(:green).background(:yellow)
-#puts "misio".foreground(:red).background(:blue).bright
-# puts "grubo".bright
-# puts "mruga".blink
-# puts "cyan mruga".blink.foreground(:cyan)
-# puts "green podkresl".foreground(:green).underline
-# puts "podkresl green".underline.foreground(:green)
-#puts "podkresl".underline
-# puts "red blue".foreground(:red).foreground(:blue)
-# puts "\e[4;32;44mabc\e[0m"
-# puts "\e[;32;44mabc\e[0m"
-# puts "\e[4;44mabc\e[0m"
-# puts "\e[4;32mabc\e[0m"
-# puts "\e[32;4mabc\e[0m"

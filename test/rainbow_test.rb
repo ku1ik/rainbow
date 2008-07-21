@@ -1,56 +1,40 @@
 require 'test/unit'
-require 'rainbow'
+require File.expand_path(File.dirname(__FILE__) + '/../lib/rainbow')
 
-class RainbowTest < Test::Unit::TestCase
+class RainbowTest < Test::Unit::TestCase #:nodoc:
+  def test_color
+    assert_equal "\e[31mhello\e[0m", "hello".color(:red)
+  end
+  
   def test_foreground
-    txt = "hello".foreground(:red)
-    puts txt
-    assert_equal "\e[31mhello\e[0m", txt
+    assert_equal "hello".color(:red), "hello".foreground(:red)
   end
 
+  def test_colour_alias
+    assert_equal "hello".color(:red), "hello".colour(:red)
+  end
+  
   def test_background
-    txt = "hello".background(:green)
-    puts txt
-    assert_equal "\e[42mhello\e[0m", txt
+    assert_equal "\e[42mhello\e[0m", "hello".background(:green)
   end
 
-  def test_foreground_and_background
-    txt = "hello".foreground(:red).background(:green)
-    puts txt
-    assert_equal "\e[31m\e[42mhello\e[0m", txt
+  def test_color_and_background
+    assert_equal "\e[31m\e[42mhello\e[0m", "hello".color(:red).background(:green)
   end
 
   def test_bright
-    txt = "hello".bright
-    puts txt
-    assert_equal "\e[1mhello\e[0m", txt
+    assert_equal "\e[1mhello\e[0m", "hello".bright
   end
 
-  def test_bright_and_foreground
-    txt = "hello".bright.foreground(:red)
-    puts txt
-    assert_equal "\e[1m\e[31mhello\e[0m", txt
+  def test_bright_and_color
+    assert_equal "\e[1m\e[31mhello\e[0m", "hello".bright.color(:red)
   end
 
   def test_bright_and_background
-    txt = "hello".bright.background(:blue)
-    puts txt
-    assert_equal "\e[1m\e[44mhello\e[0m", txt
+    assert_equal "\e[1m\e[44mhello\e[0m", "hello".bright.background(:blue)
   end
 
   def test_color_override
-    txt = "hello".foreground(:red).foreground(:blue).foreground(:yellow)
-    puts txt
-    assert_equal "\e[31m\e[34m\e[33mhello\e[0m", txt
-  end
-
-  def test_zshow
-    puts "jola"
-    puts "jola bright".bright
-    puts "jola blink".blink
-    puts "jola italic".italic
-    puts "jola underline".underline
-    puts "jola inverse".inverse
-    puts "jola hide".hide
+    assert_equal "\e[31m\e[34m\e[33mhello\e[0m", "hello".color(:red).color(:blue).color(:yellow)
   end
 end
