@@ -1,4 +1,3 @@
-
 module Sickill
   module Rainbow
     
@@ -89,6 +88,18 @@ module Sickill
     
     def validate_color(color) #:nodoc:
       raise ArgumentError.new("Unknown color, valid colors: #{TERM_COLORS.keys.join(', ')}") unless TERM_COLORS.keys.include?(color)
+    end
+  end
+end
+
+begin
+  require 'Win32/Console/ANSI' if PLATFORM =~ /win32/
+rescue LoadError
+#  raise 'You must gem install win32console to use color on Windows'
+  module Sickill::Rainbow
+    protected
+    def wrap_with_code(code)
+      self
     end
   end
 end
