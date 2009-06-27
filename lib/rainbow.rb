@@ -24,11 +24,11 @@ module Sickill
     }
     
     # Sets foreground color if this text.
-  	def foreground(color)
+    def foreground(color)
       color = color.to_sym
       validate_color(color)
       wrap_with_code(TERM_COLORS[color] + 30)
-  	end
+    end
     alias_method :color, :foreground
     alias_method :colour, :foreground
 
