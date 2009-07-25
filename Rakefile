@@ -6,7 +6,7 @@ task :default => [:repackage]
 
 spec = Gem::Specification.new do |s|
    s.name = %q{rainbow}
-   s.version = "1.0.2"
+   s.version = "1.0.3"
    s.platform = Gem::Platform::RUBY
    s.date = %q{2009-07-26}
    s.authors = ["Marcin Kulik"]
