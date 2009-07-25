@@ -79,7 +79,7 @@ module Sickill
 
     protected
     def wrap_with_code(code) #:nodoc:
-      out = self
+      out = "#{self}"
       match = out.match(/^(\e\[([\d;]+)m)*/)
       out.insert(match.end(0), "\e[#{code}m")
       out.concat("\e[0m") unless out =~ /\e\[0m$/
