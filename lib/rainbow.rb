@@ -1,7 +1,7 @@
 module Sickill
   module Rainbow
-    
-    TERM_COLORS = { 
+
+    TERM_COLORS = {
       :black => 0,
       :red => 1,
       :green => 2,
@@ -12,7 +12,7 @@ module Sickill
       :white => 7,
       :default => 9,
     }
-    
+
     TERM_EFFECTS = {
       :reset => 0,
       :bright => 1,
@@ -22,31 +22,27 @@ module Sickill
       :inverse => 7,
       :hide => 8,
     }
-    
+
     # Sets foreground color if this text.
     def foreground(color)
-      color = color.to_sym
-      validate_color(color)
-      wrap_with_code(TERM_COLORS[color] + 30)
+      wrap_with_code(get_color_code(color, :foreground))
     end
     alias_method :color, :foreground
     alias_method :colour, :foreground
 
-    
+
     # Sets background color of this text.
     def background(color)
-      color = color.to_sym
-      validate_color(color)
-      wrap_with_code(TERM_COLORS[color] + 40)
+      wrap_with_code(get_color_code(color, :background))
     end
-    
+
     # Resets terminal to default colors/backgrounds.
     #
     # It shouldn't be needed to use this method because all methods append terminal reset code to end of string.
     def reset
       wrap_with_code(TERM_EFFECTS[:reset])
     end
-    
+
     # Turns on bright/bold for this text.
     def bright
       wrap_with_code(TERM_EFFECTS[:bright])
@@ -56,7 +52,7 @@ module Sickill
     def italic
       wrap_with_code(TERM_EFFECTS[:italic])
     end
-    
+
     # Turns on underline decoration for this text.
     def underline
       wrap_with_code(TERM_EFFECTS[:underline])
@@ -85,7 +81,27 @@ module Sickill
       out.concat("\e[0m") unless out =~ /\e\[0m$/
       out
     end
-    
+
+    def get_color_code(color, type)
+      case color
+      when Symbol
+        validate_color(color)
+        TERM_COLORS[color] + (type == :foreground ? 30 : 40)
+      when String
+        color = color.gsub("#", "")
+        r, g, b = color[0..1].to_i(16), color[2..3].to_i(16), color[4..5].to_i(16)
+        get_rgb_code(r, g, b, type)
+      when Array
+        get_rgb_code(color[0], color[1], color[2], type)
+      end
+    end
+
+    def get_rgb_code(r, g, b, type) #:nodoc:
+      code = { :foreground => 38, :background => 48 }[type]
+      index = 16 + (6 * (r / 256.0)).to_i * 36 + (6 * (g / 256.0)).to_i * 6 + (6 * (b / 256.0)).to_i
+      "#{code};5;#{index}"
+    end
+
     def validate_color(color) #:nodoc:
       raise ArgumentError.new("Unknown color, valid colors: #{TERM_COLORS.keys.join(', ')}") unless TERM_COLORS.keys.include?(color)
     end

@@ -6,9 +6,9 @@ task :default => [:repackage]
 
 spec = Gem::Specification.new do |s|
    s.name = %q{rainbow}
-   s.version = "1.0.3"
+   s.version = "1.0.4"
    s.platform = Gem::Platform::RUBY
-   s.date = %q{2009-07-26}
+   s.date = %q{2009-11-08}
    s.authors = ["Marcin Kulik"]
    s.email = %q{marcin.kulik@gmail.com}
    s.summary = %q{Rainbow extends ruby String class enabling coloring text on ANSI terminals}
