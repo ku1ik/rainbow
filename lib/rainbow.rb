@@ -23,8 +23,9 @@ module Sickill
       :hide => 8,
     }
 
-    # Sets foreground color if this text.
-    def foreground(color)
+    # Sets foreground color of this text.
+    def foreground(*color)
+      color = color.first if color.size == 1
       wrap_with_code(get_color_code(color, :foreground))
     end
     alias_method :color, :foreground
@@ -32,7 +33,8 @@ module Sickill
 
 
     # Sets background color of this text.
-    def background(color)
+    def background(*color)
+      color = color.first if color.size == 1
       wrap_with_code(get_color_code(color, :background))
     end
 
@@ -82,7 +84,7 @@ module Sickill
       out
     end
 
-    def get_color_code(color, type)
+    def get_color_code(color, type) #:nodoc:
       case color
       when Symbol
         validate_color(color)
@@ -92,11 +94,13 @@ module Sickill
         r, g, b = color[0..1].to_i(16), color[2..3].to_i(16), color[4..5].to_i(16)
         get_rgb_code(r, g, b, type)
       when Array
+        raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") unless color.size == 3
         get_rgb_code(color[0], color[1], color[2], type)
       end
     end
 
     def get_rgb_code(r, g, b, type) #:nodoc:
+      raise ArgumentError.new("RGB value outside 0-255 range") if [r, g, b].min < 0 || [r, g, b].max > 255
       code = { :foreground => 38, :background => 48 }[type]
       index = 16 + (6 * (r / 256.0)).to_i * 36 + (6 * (g / 256.0)).to_i * 6 + (6 * (b / 256.0)).to_i
       "#{code};5;#{index}"
