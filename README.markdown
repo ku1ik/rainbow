@@ -21,9 +21,17 @@ Rainbow adds following methods to String class:
 * inverse
 * hide.
 
-Color can be one of following symbols: :black, :red, :green, :yellow, :blue, :magenta, :cyan, :white and :default.
-
 Each of those methods returns string wrapped with some ANSI codes so you can chain calls as in example above.
+
+Color can be one of following symbols:
+
+    :black, :red, :green, :yellow, :blue, :magenta, :cyan, :white, :default
+
+If you have 256-colors capable terminal you can also specify color in RGB which will find the nearest match from 256 colors palette: 
+
+    "Jolacz".color(115, 23, 98)
+    "Jolacz".color("#FFC482")
+    "Jolacz".color("FFC482")
 
 It also has Windows support (uses win32console gem if installed, otherwise strings are returned unaltered).
 
@@ -32,3 +40,4 @@ Usage
 
     require 'rainbow'
     puts "this is red".foreground(:red) + " and " + "this on yellow bg".background(:yellow) + " and " + "even bright underlined!".underline.bright
+
