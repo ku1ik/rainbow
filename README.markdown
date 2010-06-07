@@ -35,6 +35,12 @@ If you have 256-colors capable terminal you can also specify color in RGB which 
 
 It also has Windows support (uses win32console gem if installed, otherwise strings are returned unaltered).
 
+Rainbow can be disabled globally by setting:
+
+    Sickill::Rainbow.enabled = false
+
+It will be disabled by default if it detects that STDOUT is not a TTY.
+
 Installation
 ------------
 
