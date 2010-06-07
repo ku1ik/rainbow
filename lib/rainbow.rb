@@ -1,5 +1,7 @@
 module Sickill
   module Rainbow
+    class << self; attr_accessor :enabled; end
+    @enabled = STDOUT.tty? && ENV['TERM'] != 'dumb'
 
     TERM_COLORS = {
       :black => 0,
@@ -77,6 +79,8 @@ module Sickill
 
     protected
     def wrap_with_code(code) #:nodoc:
+      return self unless Sickill::Rainbow.enabled
+
       out = "#{self}"
       match = out.match(/^(\e\[([\d;]+)m)*/)
       out.insert(match.end(0), "\e[#{code}m")
@@ -112,16 +116,10 @@ module Sickill
   end
 end
 
+String.send(:include, Sickill::Rainbow)
+
 begin
   require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
 rescue LoadError
-#  raise 'You must gem install win32console to use color on Windows'
-  module Sickill::Rainbow
-    protected
-    def wrap_with_code(code)
-      self
-    end
-  end
+  Sickill::Rainbow.enabled = false
 end
-
-String.send(:include, Sickill::Rainbow)
