@@ -44,7 +44,7 @@ It will be disabled by default if it detects that STDOUT is not a TTY.
 Installation
 ------------
 
-    gem install rainbow -s http://gemcutter.org
+    gem install rainbow
 
 Usage
 -----
