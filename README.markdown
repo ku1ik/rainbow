@@ -4,7 +4,7 @@ Rainbow
 About
 -----
 
-Rainbow extends ruby String class adding methods to wrap the string with "ANSI escape codes":http://en.wikipedia.org/wiki/ANSI_escape_code. 
+Rainbow extends ruby String class adding methods to wrap the string with [ANSI escape codes](http://en.wikipedia.org/wiki/ANSI_escape_code).
 
 Features
 --------
