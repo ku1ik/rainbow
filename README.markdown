@@ -52,3 +52,11 @@ Usage
     require 'rainbow'
     puts "this is red".foreground(:red) + " and " + "this on yellow bg".background(:yellow) + " and " + "even bright underlined!".underline.bright
 
+Rails Usage
+-----------
+
+You're probably wanting to add colour to your logs. To do so you must explicity enable rainbow because it will detect that STDOUT (ie: the log file) is not a TTY.
+To make things easy, create the file `config/initializers/rainbow.rb` and include the following:
+
+    require 'rainbow'
+    Sickill::Rainbow.enabled = true
