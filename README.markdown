@@ -33,7 +33,11 @@ If you have 256-colors capable terminal you can also specify color in RGB which 
     "Jolacz".color("#FFC482")
     "Jolacz".color("FFC482")
 
-It also has Windows support (uses win32console gem if installed, otherwise strings are returned unaltered).
+For support on Windows, you should install the following gems:
+
+  gem install windows-pr win32console
+
+If the gems aren't installed strings are simply returned unaltered.
 
 Rainbow can be disabled globally by setting:
 
