@@ -1,3 +1,5 @@
+require 'rbconfig'
+
 module Sickill
   module Rainbow
     class << self; attr_accessor :enabled; end
@@ -118,8 +120,11 @@ end
 
 String.send(:include, Sickill::Rainbow)
 
-begin
-  require 'Win32/Console/ANSI' if RUBY_PLATFORM =~ /win32/
-rescue LoadError
-  Sickill::Rainbow.enabled = false
+# On Windows systems, try to load the local ANSI support library
+if Config::CONFIG['host_os'] =~ /mswin|mingw/
+  begin
+    require 'Win32/Console/ANSI'
+  rescue LoadError
+    Sickill::Rainbow.enabled = false
+  end
 end
