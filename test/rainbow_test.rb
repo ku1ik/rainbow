@@ -1,3 +1,4 @@
+require 'coco'
 require 'test/unit'
 require File.expand_path(File.dirname(__FILE__) + '/../lib/rainbow')
 
@@ -80,5 +81,29 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
 
   def test_color_override
     assert_equal "\e[31m\e[34m\e[33mhello\e[0m", "hello".color(:red).color(:blue).color(:yellow)
+  end
+  
+  def test_reset
+    assert_equal "\e[0mhello\e[0m", "hello".reset
+  end
+  
+  def test_italic
+    assert_equal "\e[3mhello\e[0m", "hello".italic
+  end
+  
+  def test_underline
+    assert_equal "\e[4mhello\e[0m", "hello".underline
+  end
+  
+  def test_blink
+    assert_equal "\e[5mhello\e[0m", "hello".blink
+  end
+
+  def test_inverse
+    assert_equal "\e[7mhello\e[0m", "hello".inverse
+  end
+  
+  def test_hide
+    assert_equal "\e[8mhello\e[0m", "hello".hide
   end
 end
