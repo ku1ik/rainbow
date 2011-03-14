@@ -93,7 +93,7 @@ module Sickill
     def get_color_code(color, type) #:nodoc:
       case color
       when Symbol
-        validate_color(color)
+        validate_color_name(color)
         TERM_COLORS[color] + (type == :foreground ? 30 : 40)
       when String
         color = color.gsub("#", "")
@@ -116,9 +116,9 @@ module Sickill
       "#{code};5;#{index}"
     end
 
-    def validate_color(color) #:nodoc:
+    def validate_color_name(name) #:nodoc:
       color_names = TERM_COLORS.keys
-      unless color_names.include?(color)
+      unless color_names.include?(name)
         raise ArgumentError.new("Unknown color, valid colors: #{color_names.join(', ')}")
       end
     end
