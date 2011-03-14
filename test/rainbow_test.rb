@@ -116,3 +116,124 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
   end
   
 end
+
+class ANSIColorCodeTest < Test::Unit::TestCase
+  include Sickill::Rainbow
+  
+  ### Foreground
+  
+  def test_bad_foreground_name
+    assert_raises ArgumentError do
+      ANSIColorCode.new(:azerty, :foreground).code
+    end
+  end
+  
+  def test_by_name_black_foreground
+    assert_equal 30, ANSIColorCode.new(:black, :foreground).code
+  end
+  
+  def test_by_name_red_foreground
+    assert_equal 31, ANSIColorCode.new(:red, :foreground).code
+  end
+  
+  def test_by_name_green_foreground
+    assert_equal 32, ANSIColorCode.new(:green, :foreground).code
+  end
+  
+  def test_by_name_yellow_foreground
+    assert_equal 33, ANSIColorCode.new(:yellow, :foreground).code
+  end
+  
+  def test_by_name_blue_foreground
+    assert_equal 34, ANSIColorCode.new(:blue, :foreground).code
+  end
+  
+  def test_by_name_magenta_foreground
+    assert_equal 35, ANSIColorCode.new(:magenta, :foreground).code
+  end
+  
+  def test_by_name_cyan_foreground
+    assert_equal 36, ANSIColorCode.new(:cyan, :foreground).code
+  end
+  
+  def test_by_name_white_foreground
+    assert_equal 37, ANSIColorCode.new(:white, :foreground).code
+  end
+  
+  ### Background
+  
+  def test_bad_background_name
+    assert_raises ArgumentError do
+      ANSIColorCode.new(:azerty, :background).code
+    end
+  end
+  
+  def test_by_name_black_background
+    assert_equal 40, ANSIColorCode.new(:black, :background).code
+  end
+  
+  def test_by_name_red_background
+    assert_equal 41, ANSIColorCode.new(:red, :background).code
+  end
+  
+  def test_by_name_green_background
+    assert_equal 42, ANSIColorCode.new(:green, :background).code
+  end
+  
+  def test_by_name_yellow_background
+    assert_equal 43, ANSIColorCode.new(:yellow, :background).code
+  end
+  
+  def test_by_name_blue_background
+    assert_equal 44, ANSIColorCode.new(:blue, :background).code
+  end
+  
+  def test_by_name_magenta_background
+    assert_equal 45, ANSIColorCode.new(:magenta, :background).code
+  end
+  
+  def test_by_name_cyan_background
+    assert_equal 46, ANSIColorCode.new(:cyan, :background).code
+  end
+  
+  def test_by_name_white_background
+    assert_equal 47, ANSIColorCode.new(:white, :background).code
+  end
+  
+  ### Hex color
+  
+  def test_by_hex_maj
+    assert_equal "38;5;46", ANSIColorCode.new("00FF00", :foreground).code
+  end
+  
+  def test_by_hex_min
+    assert_equal "38;5;46", ANSIColorCode.new("00ff00", :foreground).code
+  end
+  
+  def test_by_hex_maj_with_sharp
+    assert_equal "38;5;46", ANSIColorCode.new("#00FF00", :foreground).code
+  end
+  
+  def test_by_hex_min_with_sharp
+    assert_equal "38;5;46", ANSIColorCode.new("#00ff00", :foreground).code
+  end
+  
+  ### RGB color
+  
+  def test_to_few_colors
+    assert_raises ArgumentError do
+      ANSIColorCode.new([255, 0], :foreground).code
+    end
+  end
+  
+  def test_to_much_colors
+    assert_raises ArgumentError do
+      ANSIColorCode.new([255, 0, 0, 0], :foreground).code
+    end
+  end
+  
+  def test_by_rgb_red_foreground
+    assert_equal "38;5;196", ANSIColorCode.new([255, 0, 0], :foreground).code
+  end
+  
+end

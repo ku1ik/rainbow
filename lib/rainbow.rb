@@ -1,4 +1,5 @@
 require 'rbconfig'
+require './lib/ansi_color_code'
 
 module Sickill
   module Rainbow
@@ -30,7 +31,7 @@ module Sickill
     # Sets foreground color of this text.
     def foreground(*color)
       color = color.first if color.size == 1
-      wrap_with_code(get_color_code(color, :foreground))
+      wrap_with_code(ANSIColorCode.new(color, :foreground).code)
     end
     alias_method :color, :foreground
     alias_method :colour, :foreground
@@ -39,7 +40,7 @@ module Sickill
     # Sets background color of this text.
     def background(*color)
       color = color.first if color.size == 1
-      wrap_with_code(get_color_code(color, :background))
+      wrap_with_code(ANSIColorCode.new(color, :background).code)
     end
 
     # Resets terminal to default colors/backgrounds.
@@ -90,38 +91,6 @@ module Sickill
       self
     end
 
-    def get_color_code(color, type) #:nodoc:
-      case color
-      when Symbol
-        validate_color_name(color)
-        TERM_COLORS[color] + (type == :foreground ? 30 : 40)
-      when String
-        color = color.gsub("#", "")
-        red, green, blue = color[0..1].to_i(16), color[2..3].to_i(16), color[4..5].to_i(16)
-        get_rgb_code(red, green, blue, type)
-      when Array
-        unless color.size == 3
-          raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") 
-        end
-        get_rgb_code(color[0], color[1], color[2], type)
-      end
-    end
-
-    def get_rgb_code(red, green, blue, type) #:nodoc:
-      if [red, green, blue].min < 0 || [red, green, blue].max > 255
-        raise ArgumentError.new("RGB value outside 0-255 range") 
-      end
-      code = { :foreground => 38, :background => 48 }[type]
-      index = 16 + (6 * (red / 256.0)).to_i * 36 + (6 * (green / 256.0)).to_i * 6 + (6 * (blue / 256.0)).to_i
-      "#{code};5;#{index}"
-    end
-
-    def validate_color_name(name) #:nodoc:
-      color_names = TERM_COLORS.keys
-      unless color_names.include?(name)
-        raise ArgumentError.new("Unknown color, valid colors: #{color_names.join(', ')}")
-      end
-    end
   end
 end
 
