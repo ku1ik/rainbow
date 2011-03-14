@@ -83,12 +83,11 @@ module Sickill
     
     def wrap_with_code(code) #:nodoc:
       return self unless Sickill::Rainbow.enabled
-
-      out = "#{self}"
-      match = out.match(/^(\e\[([\d;]+)m)*/)
-      out.insert(match.end(0), "\e[#{code}m")
-      out.concat("\e[0m") unless out =~ /\e\[0m$/
-      out
+      
+      matched = match(/^(\e\[([\d;]+)m)*/)
+      insert(matched.end(0), "\e[#{code}m")
+      concat("\e[0m") unless self =~ /\e\[0m$/
+      self
     end
 
     def get_color_code(color, type) #:nodoc:
