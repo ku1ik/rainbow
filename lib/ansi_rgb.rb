@@ -4,6 +4,7 @@ module Sickill
     # Retrieve ANSI color code from RGB color.
     class AnsiRgb
     
+      # +ground+ is one of :foreground, :background
       # +rgb+ is an array of 3 values between 0 and 255.
       def initialize ground, rgb
         if RGB.outside_range? rgb
@@ -13,6 +14,7 @@ module Sickill
         @red, @green, @blue = rgb[0], rgb[1], rgb[2]
       end
       
+      # Get the ANSI color code for this RGB color.
       def code
         # It would be great if you could explain a little the following computation.
         index = 16 + RGB.magic(@red) * 36 + RGB.magic(@green) * 6 + RGB.magic(@blue)

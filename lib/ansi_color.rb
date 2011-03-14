@@ -8,6 +8,7 @@ module Sickill
     class AnsiColor
     
       # +ground+ is one of :foreground, :background
+      # +color+ is one of this 3 formats: name, html, rgb
       def initialize ground, *color
         @ground = ground
         if color.size == 1
