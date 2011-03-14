@@ -30,8 +30,7 @@ module Sickill
 
     # Sets foreground color of this text.
     def foreground(*color)
-      color = color.first if color.size == 1
-      wrap_with_code(ANSIColorCode.new(color, :foreground).code)
+      wrap_with_code(ANSIColorCode.new(:foreground, *color).code)
     end
     alias_method :color, :foreground
     alias_method :colour, :foreground
@@ -39,8 +38,7 @@ module Sickill
 
     # Sets background color of this text.
     def background(*color)
-      color = color.first if color.size == 1
-      wrap_with_code(ANSIColorCode.new(color, :background).code)
+      wrap_with_code(ANSIColorCode.new(:background, *color).code)
     end
 
     # Resets terminal to default colors/backgrounds.

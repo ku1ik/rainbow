@@ -6,8 +6,13 @@ module Sickill
     class ANSIColorCode
     
       # +ground+ is one of :foreground, :background
-      def initialize color, ground
-        @color, @ground = color, ground
+      def initialize ground, *color
+        @ground = ground
+        if color.size == 1
+          @color = color.first
+        else
+          @color = color
+        end
       end
       
       # Get the ANSI color code.
