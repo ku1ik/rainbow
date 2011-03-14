@@ -1,5 +1,5 @@
 require 'rbconfig'
-require './lib/ansi_color_code'
+require './lib/ansi_color'
 
 module Sickill
   module Rainbow
@@ -30,7 +30,7 @@ module Sickill
 
     # Sets foreground color of this text.
     def foreground(*color)
-      wrap_with_code(ANSIColorCode.new(:foreground, *color).code)
+      wrap_with_code(ANSIColor.new(:foreground, *color).code)
     end
     alias_method :color, :foreground
     alias_method :colour, :foreground
@@ -38,7 +38,7 @@ module Sickill
 
     # Sets background color of this text.
     def background(*color)
-      wrap_with_code(ANSIColorCode.new(:background, *color).code)
+      wrap_with_code(ANSIColor.new(:background, *color).code)
     end
 
     # Resets terminal to default colors/backgrounds.

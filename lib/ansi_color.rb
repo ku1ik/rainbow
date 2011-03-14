@@ -1,9 +1,9 @@
 module Sickill
   module Rainbow
   
-    # I retrieve ANSI color code from a color name, an html color code
+    # I retrieve ANSI color code from a color name, an html color
     # or an RGB color
-    class ANSIColorCode
+    class ANSIColor
     
       # +ground+ is one of :foreground, :background
       def initialize ground, *color
@@ -63,8 +63,13 @@ module Sickill
           raise ArgumentError.new("RGB value outside 0-255 range") 
         end
         code = { :foreground => 38, :background => 48 }[@ground]
-        index = 16 + (6 * (red / 256.0)).to_i * 36 + (6 * (green / 256.0)).to_i * 6 + (6 * (blue / 256.0)).to_i
+        index = 16 + magic(red) * 36 + magic(green) * 6 + magic(blue)
         "#{code};5;#{index}"
+      end
+      
+      # I can't figure out how to name this method...
+      def magic value
+        (6 * (value / 256.0)).to_i
       end
       
     end
