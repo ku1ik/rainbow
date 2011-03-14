@@ -14,6 +14,7 @@ module Sickill
       end
       
       def code
+        # It would be great if you could explain a little the following computation.
         index = 16 + RGB.magic(@red) * 36 + RGB.magic(@green) * 6 + RGB.magic(@blue)
         "#{@ground_code};5;#{index}"
       end
