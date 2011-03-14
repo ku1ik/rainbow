@@ -110,9 +110,15 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
   class MyString < String
   end
   
-  def test_hineritance
+  def test_inheritance
     my_string = MyString.new "hello"
     assert_equal "\e[31mhello\e[0m", my_string.color(:red)
+  end
+  
+  def test_disabled
+    Sickill::Rainbow.enabled = false
+    assert_equal "hello", "hello".color(:red)
+    Sickill::Rainbow.enabled = true
   end
   
 end
