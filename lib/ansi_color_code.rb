@@ -33,8 +33,15 @@ module Sickill
       
       def code_from_html
         @color = @color.gsub("#", "")
-        red, green, blue = @color[0..1].to_i(16), @color[2..3].to_i(16), @color[4..5].to_i(16)
+        red, green, blue = rgb_from_html
         get_rgb_code(red, green, blue)
+      end
+      
+      def rgb_from_html
+        red = @color[0..1].to_i(16)
+        green = @color[2..3].to_i(16)
+        blue = @color[4..5].to_i(16)
+        [red, green, blue]
       end
       
       def code_from_rgb
