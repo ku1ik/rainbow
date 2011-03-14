@@ -10,24 +10,34 @@ module Sickill
         @color, @ground = color, ground
       end
       
+      # Get the ANSI color code.
       def code
         case @color
-          when Symbol
-            validate_color_name
-            TERM_COLORS[@color] + (@ground == :foreground ? 30 : 40)
-          when String
-            @color = @color.gsub("#", "")
-            red, green, blue = @color[0..1].to_i(16), @color[2..3].to_i(16), @color[4..5].to_i(16)
-            get_rgb_code(red, green, blue)
-          when Array
-            unless @color.size == 3
-              raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") 
-            end
-            get_rgb_code(@color[0], @color[1], @color[2])
+          when Symbol then code_from_name
+          when String then code_from_html
+          when Array then code_from_rgb
         end
       end
       
       private
+      
+      def code_from_name
+        validate_color_name
+        TERM_COLORS[@color] + (@ground == :foreground ? 30 : 40)
+      end
+      
+      def code_from_html
+        @color = @color.gsub("#", "")
+        red, green, blue = @color[0..1].to_i(16), @color[2..3].to_i(16), @color[4..5].to_i(16)
+        get_rgb_code(red, green, blue)
+      end
+      
+      def code_from_rgb
+        unless @color.size == 3
+          raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") 
+        end
+        get_rgb_code(@color[0], @color[1], @color[2])
+      end
       
       def validate_color_name
         color_names = TERM_COLORS.keys
