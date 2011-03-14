@@ -79,7 +79,8 @@ module Sickill
       wrap_with_code(TERM_EFFECTS[:hide])
     end
 
-    protected
+    private
+    
     def wrap_with_code(code) #:nodoc:
       return self unless Sickill::Rainbow.enabled
 
@@ -100,20 +101,27 @@ module Sickill
         red, green, blue = color[0..1].to_i(16), color[2..3].to_i(16), color[4..5].to_i(16)
         get_rgb_code(red, green, blue, type)
       when Array
-        raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") unless color.size == 3
+        unless color.size == 3
+          raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") 
+        end
         get_rgb_code(color[0], color[1], color[2], type)
       end
     end
 
     def get_rgb_code(red, green, blue, type) #:nodoc:
-      raise ArgumentError.new("RGB value outside 0-255 range") if [red, green, blue].min < 0 || [red, green, blue].max > 255
+      if [red, green, blue].min < 0 || [red, green, blue].max > 255
+        raise ArgumentError.new("RGB value outside 0-255 range") 
+      end
       code = { :foreground => 38, :background => 48 }[type]
       index = 16 + (6 * (red / 256.0)).to_i * 36 + (6 * (green / 256.0)).to_i * 6 + (6 * (blue / 256.0)).to_i
       "#{code};5;#{index}"
     end
 
     def validate_color(color) #:nodoc:
-      raise ArgumentError.new("Unknown color, valid colors: #{TERM_COLORS.keys.join(', ')}") unless TERM_COLORS.keys.include?(color)
+      color_names = TERM_COLORS.keys
+      unless color_names.include?(color)
+        raise ArgumentError.new("Unknown color, valid colors: #{color_names.join(', ')}")
+      end
     end
   end
 end

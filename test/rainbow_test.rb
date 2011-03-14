@@ -106,4 +106,13 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
   def test_hide
     assert_equal "\e[8mhello\e[0m", "hello".hide
   end
+  
+  class MyString < String
+  end
+  
+  def test_hineritance
+    my_string = MyString.new "hello"
+    assert_equal "\e[31mhello\e[0m", my_string.color(:red)
+  end
+  
 end
