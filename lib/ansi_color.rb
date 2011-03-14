@@ -1,9 +1,11 @@
+require './lib/ansi_rgb'
+
 module Sickill
   module Rainbow
   
     # I retrieve ANSI color code from a color name, an html color
     # or an RGB color
-    class ANSIColor
+    class AnsiColor
     
       # +ground+ is one of :foreground, :background
       def initialize ground, *color
@@ -33,8 +35,7 @@ module Sickill
       
       def code_from_html
         @color = @color.gsub("#", "")
-        red, green, blue = rgb_from_html
-        get_rgb_code(red, green, blue)
+        AnsiRgb.new(@ground, rgb_from_html).code
       end
       
       def rgb_from_html
@@ -48,7 +49,7 @@ module Sickill
         unless @color.size == 3
           raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") 
         end
-        get_rgb_code(@color[0], @color[1], @color[2])
+        AnsiRgb.new(@ground, @color).code
       end
       
       def validate_color_name
@@ -56,20 +57,6 @@ module Sickill
         unless color_names.include?(@color)
           raise ArgumentError.new("Unknown color, valid colors: #{color_names.join(', ')}")
         end
-      end
-      
-      def get_rgb_code(red, green, blue)
-        if [red, green, blue].min < 0 || [red, green, blue].max > 255
-          raise ArgumentError.new("RGB value outside 0-255 range") 
-        end
-        code = { :foreground => 38, :background => 48 }[@ground]
-        index = 16 + magic(red) * 36 + magic(green) * 6 + magic(blue)
-        "#{code};5;#{index}"
-      end
-      
-      # I can't figure out how to name this method...
-      def magic value
-        (6 * (value / 256.0)).to_i
       end
       
     end
