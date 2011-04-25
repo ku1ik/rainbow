@@ -1,4 +1,5 @@
 require 'rbconfig'
+require './lib/ansi_color'
 
 module Sickill
   module Rainbow
@@ -29,8 +30,7 @@ module Sickill
 
     # Sets foreground color of this text.
     def foreground(*color)
-      color = color.first if color.size == 1
-      wrap_with_code(get_color_code(color, :foreground))
+      wrap_with_code(AnsiColor.new(:foreground, *color).code)
     end
     alias_method :color, :foreground
     alias_method :colour, :foreground
@@ -38,8 +38,7 @@ module Sickill
 
     # Sets background color of this text.
     def background(*color)
-      color = color.first if color.size == 1
-      wrap_with_code(get_color_code(color, :background))
+      wrap_with_code(AnsiColor.new(:background, *color).code)
     end
 
     # Resets terminal to default colors/backgrounds.
@@ -79,42 +78,17 @@ module Sickill
       wrap_with_code(TERM_EFFECTS[:hide])
     end
 
-    protected
+    private
+    
     def wrap_with_code(code) #:nodoc:
       return self unless Sickill::Rainbow.enabled
-
-      out = "#{self}"
-      match = out.match(/^(\e\[([\d;]+)m)*/)
-      out.insert(match.end(0), "\e[#{code}m")
-      out.concat("\e[0m") unless out =~ /\e\[0m$/
-      out
+      
+      matched = match(/^(\e\[([\d;]+)m)*/)
+      insert(matched.end(0), "\e[#{code}m")
+      concat("\e[0m") unless self =~ /\e\[0m$/
+      self
     end
 
-    def get_color_code(color, type) #:nodoc:
-      case color
-      when Symbol
-        validate_color(color)
-        TERM_COLORS[color] + (type == :foreground ? 30 : 40)
-      when String
-        color = color.gsub("#", "")
-        r, g, b = color[0..1].to_i(16), color[2..3].to_i(16), color[4..5].to_i(16)
-        get_rgb_code(r, g, b, type)
-      when Array
-        raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3") unless color.size == 3
-        get_rgb_code(color[0], color[1], color[2], type)
-      end
-    end
-
-    def get_rgb_code(r, g, b, type) #:nodoc:
-      raise ArgumentError.new("RGB value outside 0-255 range") if [r, g, b].min < 0 || [r, g, b].max > 255
-      code = { :foreground => 38, :background => 48 }[type]
-      index = 16 + (6 * (r / 256.0)).to_i * 36 + (6 * (g / 256.0)).to_i * 6 + (6 * (b / 256.0)).to_i
-      "#{code};5;#{index}"
-    end
-
-    def validate_color(color) #:nodoc:
-      raise ArgumentError.new("Unknown color, valid colors: #{TERM_COLORS.keys.join(', ')}") unless TERM_COLORS.keys.include?(color)
-    end
   end
 end
 
