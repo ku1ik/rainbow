@@ -64,3 +64,10 @@ To make things easy, create the file `config/initializers/rainbow.rb` and includ
 
     require 'rainbow'
     Sickill::Rainbow.enabled = true
+
+Authors
+-------
+
+* Marcin Kulik
+* Xavier Nayrac
+
