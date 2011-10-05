@@ -1,4 +1,4 @@
-require './lib/ansi_rgb'
+require File.join(File.dirname(__FILE__), 'ansi_rgb')
 
 module Sickill
   module Rainbow
