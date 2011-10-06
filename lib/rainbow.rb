@@ -1,5 +1,5 @@
 require 'rbconfig'
-require './lib/ansi_color'
+require File.join(File.dirname(__FILE__), 'ansi_color')
 
 module Sickill
   module Rainbow
@@ -95,7 +95,7 @@ end
 String.send(:include, Sickill::Rainbow)
 
 # On Windows systems, try to load the local ANSI support library
-if Config::CONFIG['host_os'] =~ /mswin|mingw/
+if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
   begin
     require 'Win32/Console/ANSI'
   rescue LoadError
