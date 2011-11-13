@@ -17,8 +17,11 @@ module Sickill
 
       # Get the ANSI color code for this RGB color.
       def code
-        # It would be great if you could explain a little the following computation.
-        index = 16 + RGB.magic(@red) * 36 + RGB.magic(@green) * 6 + RGB.magic(@blue)
+        index = 16 +
+                RGB.to_ansi_domain(@red) * 36 +
+                RGB.to_ansi_domain(@green) * 6 +
+                RGB.to_ansi_domain(@blue)
+
         "#{@ground_code};5;#{index}"
       end
 
@@ -26,12 +29,12 @@ module Sickill
 
     # Helper class for RGB color format.
     class RGB
-      def self.outside_range? rgb
+      def self.outside_range?(rgb)
         rgb.min < 0 or rgb.max > 255
       end
 
-      # I can't figure out how to name this method...
-      def self.magic value
+      # Change domain of color value from 0-255 to 0-5
+      def self.to_ansi_domain(value)
         (6 * (value / 256.0)).to_i
       end
     end
