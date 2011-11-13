@@ -48,7 +48,8 @@ module Sickill
 
       def code_from_rgb
         unless @color.size == 3
-          raise ArgumentError.new("Bad number of arguments for RGB color definition, should be 3")
+          raise ArgumentError.new \
+            "Bad number of arguments for RGB color definition, should be 3"
         end
         AnsiRgb.new(@ground, @color).code
       end
@@ -56,7 +57,8 @@ module Sickill
       def validate_color_name
         color_names = TERM_COLORS.keys
         unless color_names.include?(@color)
-          raise ArgumentError.new("Unknown color, valid colors: #{color_names.join(', ')}")
+          raise ArgumentError.new \
+            "Unknown color, valid colors: #{color_names.join(', ')}"
         end
       end
 

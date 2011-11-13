@@ -43,7 +43,8 @@ module Sickill
 
     # Resets terminal to default colors/backgrounds.
     #
-    # It shouldn't be needed to use this method because all methods append terminal reset code to end of string.
+    # It shouldn't be needed to use this method because all methods
+    # append terminal reset code to end of string.
     def reset
       wrap_with_code(TERM_EFFECTS[:reset])
     end
@@ -53,7 +54,8 @@ module Sickill
       wrap_with_code(TERM_EFFECTS[:bright])
     end
 
-    # Turns on italic style for this text (not well supported by terminal emulators).
+    # Turns on italic style for this text (not well supported by terminal
+    # emulators).
     def italic
       wrap_with_code(TERM_EFFECTS[:italic])
     end
@@ -63,7 +65,8 @@ module Sickill
       wrap_with_code(TERM_EFFECTS[:underline])
     end
 
-    # Turns on blinking attribute for this text (not well supported by terminal emulators).
+    # Turns on blinking attribute for this text (not well supported by terminal
+    # emulators).
     def blink
       wrap_with_code(TERM_EFFECTS[:blink])
     end
