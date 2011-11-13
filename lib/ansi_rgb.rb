@@ -6,10 +6,11 @@ module Sickill
 
       # +ground+ is one of :foreground, :background
       # +rgb+ is an array of 3 values between 0 and 255.
-      def initialize ground, rgb
-        if RGB.outside_range? rgb
+      def initialize(ground, rgb)
+        if RGB.outside_range?(rgb)
           raise ArgumentError.new("RGB value outside 0-255 range")
         end
+
         @ground_code = { :foreground => 38, :background => 48 }[ground]
         @red, @green, @blue = rgb[0], rgb[1], rgb[2]
       end
