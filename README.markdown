@@ -1,5 +1,4 @@
-Rainbow
-=======
+# Rainbow ![build status](https://secure.travis-ci.org/sickill/rainbow.png)
 
 About
 -----
