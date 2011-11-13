@@ -225,13 +225,13 @@ class AnsiColorTest < Test::Unit::TestCase
 
   ### RGB color
 
-  def test_to_few_colors
+  def test_too_few_colors
     assert_raises ArgumentError do
       AnsiColor.new(:foreground, 255, 0).code
     end
   end
 
-  def test_to_much_colors
+  def test_too_much_colors
     assert_raises ArgumentError do
       AnsiColor.new(:foreground, 255, 0, 0, 0).code
     end
