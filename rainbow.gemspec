@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
    s.summary = %q{Rainbow extends ruby String class enabling coloring text on ANSI terminals}
    s.homepage = %q{http://sickill.net}
    #s.description = "Rainbow is extension to ruby's String class adding support for colorizing text on ANSI terminals. It adds methods like #color, #background, #bright etc."
-   s.files = [ "README.markdown", "Changelog", "LICENSE", "lib/rainbow.rb", "test/rainbow_test.rb" ]
+   s.files = [ "README.markdown", "Changelog", "LICENSE", "lib/rainbow.rb", "lib/ansi_color.rb", "lib/ansi_rgb.rb", "test/rainbow_test.rb" ]
    s.has_rdoc = true
 end
 
