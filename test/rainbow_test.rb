@@ -106,6 +106,12 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
     assert_equal "\e[8mhello\e[0m", "hello".hide
   end
 
+  def test_immutability
+    string = "hello"
+    string.color(:red)
+    assert_equal string, "hello"
+  end
+
   class MyString < String
   end
 
