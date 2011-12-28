@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), 'ansi_color')
 module Sickill
   module Rainbow
     class << self; attr_accessor :enabled; end
-    @enabled = STDOUT.tty? && ENV['TERM'] != 'dumb'
+    @enabled = STDOUT.tty? && ENV['TERM'] != 'dumb' || ENV['CLICOLOR_FORCE'] == '1'
 
     TERM_COLORS = {
       :black => 0,
