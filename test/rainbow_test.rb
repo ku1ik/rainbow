@@ -112,6 +112,12 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
     assert_equal string, "hello"
   end
 
+  def test_frozen
+    string = "frozen"
+    string.freeze
+    string.color(:red)
+  end
+
   class MyString < String
   end
 
