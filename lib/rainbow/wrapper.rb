@@ -1,5 +1,6 @@
 require 'rainbow/ansi_color'
 require 'rainbow/consts'
+require 'rainbow/string_utils'
 
 module Rainbow
 
@@ -63,11 +64,7 @@ module Rainbow
     def wrap_with_code(code) #:nodoc:
       return self unless Rainbow.enabled
 
-      var = self.dup
-      matched = var.match(/^(\e\[([\d;]+)m)*/)
-      var.insert(matched.end(0), "\e[#{code}m")
-      var.concat("\e[0m") unless var =~ /\e\[0m$/
-      var
+      StringUtils.wrap_with_sgr(self, [code])
     end
 
   end
