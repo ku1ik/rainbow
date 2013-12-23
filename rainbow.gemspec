@@ -1,14 +1,16 @@
-Gem::Specification.new do |s|
-   s.name = %q{rainbow}
-   s.version = "1.1.4"
-   s.platform = Gem::Platform::RUBY
-   s.date = %q{2012-04-28}
-   s.authors = ["Marcin Kulik"]
-   s.email = %q{marcin.kulik@gmail.com}
-   s.summary = %q{Rainbow extends ruby String class enabling coloring text on ANSI terminals}
-   s.homepage = %q{http://ku1ik.com/}
-   #s.description = "Rainbow is extension to ruby's String class adding support for colorizing text on ANSI terminals. It adds methods like #color, #background, #bright etc."
-   s.files = [ "README.markdown", "Changelog", "LICENSE", "lib/rainbow.rb", "lib/ansi_color.rb", "lib/ansi_rgb.rb", "test/rainbow_test.rb" ]
-   s.has_rdoc = true
-end
+dir = File.expand_path(File.dirname(__FILE__))
+require File.join(dir, 'lib', 'rainbow', 'version')
 
+Gem::Specification.new do |s|
+  s.name = 'rainbow'
+  s.version = Rainbow::VERSION
+  s.authors = ['Marcin Kulik']
+  s.email = %q{marcin.kulik@gmail.com}
+  s.homepage = %q{http://ku1ik.com/}
+  s.summary = %q{Colorize printed text on ANSI terminals}
+  s.description = %q{Colorize printed text on ANSI terminals}
+
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test}/*`.split("\n")
+  s.require_paths = ['lib']
+end
