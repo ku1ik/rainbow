@@ -11,5 +11,5 @@ end
 
 desc "Test rainbow"
 task :test do
-  exec "ruby test/rainbow_test.rb"
+  exec "ruby -Ilib test/rainbow_test.rb"
 end
