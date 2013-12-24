@@ -1,10 +1,6 @@
+require 'rainbow/core'
 require 'rainbow/wrapper'
 require 'rainbow/string'
-
-module Rainbow
-  class << self; attr_accessor :enabled; end
-  @enabled = true
-end
 
 def Rainbow(string)
   Rainbow::Wrapper.new(string.to_s)

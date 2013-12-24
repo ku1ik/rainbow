@@ -1,5 +1,8 @@
 module Rainbow
 
+  class << self; attr_accessor :enabled; end
+  @enabled = true
+
   TERM_COLORS = {
     :black   => 0,
     :red     => 1,
