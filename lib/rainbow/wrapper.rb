@@ -7,16 +7,16 @@ module Rainbow
   class Wrapper < ::String
 
     # Sets foreground color of this text.
-    def foreground(*color)
-      wrap_with_sgr(Color.build(:foreground, color).codes)
+    def foreground(*values)
+      wrap_with_sgr(Color.build(:foreground, values).codes)
     end
 
     alias_method :color, :foreground
     alias_method :colour, :foreground
 
     # Sets background color of this text.
-    def background(*color)
-      wrap_with_sgr(Color.build(:background, color).codes)
+    def background(*values)
+      wrap_with_sgr(Color.build(:background, values).codes)
     end
 
     # Resets terminal to default colors/backgrounds.
