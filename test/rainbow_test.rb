@@ -36,36 +36,6 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
     assert_equal "\e[48;5;46mhello\e[0m", "hello".background("00ff00")
   end
 
-  def test_bad_color_name
-    assert_raises ArgumentError do
-      "hello".background(:baaaad)
-    end
-  end
-
-  def test_rgb_color_with_2_args
-    assert_raises ArgumentError do
-      "hello".background(1, 2)
-    end
-  end
-
-  def test_rgb_color_with_4_args
-    assert_raises ArgumentError do
-      "hello".background(1, 2, 3, 4)
-    end
-  end
-
-  def test_rgb_color_with_values_below_zero
-    assert_raises ArgumentError do
-      "hello".background(-3, 2, 3)
-    end
-  end
-
-  def test_rgb_color_with_values_above_255
-    assert_raises ArgumentError do
-      "hello".background(256, 2, 3)
-    end
-  end
-
   def test_bright
     assert_equal "\e[1mhello\e[0m", "hello".bright
   end
