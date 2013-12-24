@@ -6,4 +6,4 @@ rvm:
   - rbx
   - jruby
 
-script: "rake test"
+script: "rake"
