@@ -106,26 +106,6 @@ class RainbowTest < Test::Unit::TestCase #:nodoc:
     assert_equal "\e[8mhello\e[0m", "hello".hide
   end
 
-  def test_immutability
-    string = "hello"
-    string.color(:red)
-    assert_equal string, "hello"
-  end
-
-  def test_frozen
-    string = "frozen"
-    string.freeze
-    string.color(:red)
-  end
-
-  class MyString < String
-  end
-
-  def test_inheritance
-    my_string = MyString.new "hello"
-    assert_equal "\e[31mhello\e[0m", my_string.color(:red)
-  end
-
   def test_disabled
     Rainbow.enabled = false
     assert_equal "hello", "hello".color(:red)

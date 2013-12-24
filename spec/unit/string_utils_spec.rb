@@ -8,6 +8,21 @@ module Rainbow
       subject { described_class.wrap_with_sgr(string, codes) }
 
       let(:string) { 'hello' }
+      let(:codes) { [1] }
+
+      it "doesn't mutate original string" do
+        string.freeze
+        expect(subject).to eq("\e[1mhello\e[0m")
+        expect(string).to eq('hello')
+      end
+
+      context "when subclass of String class given" do
+        class Stringgg < String; end
+
+        let(:string) { Stringgg.new('hello') }
+
+        it { should eq("\e[1mhello\e[0m") }
+      end
 
       context "when no codes given" do
         let(:codes) { [] }
