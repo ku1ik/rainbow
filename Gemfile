@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'coveralls', :require => false
+gem 'mime-types', '< 2.0.0', :platforms => [:ruby_18]
 
 group :guard do
   gem 'guard'
