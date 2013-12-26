@@ -12,5 +12,6 @@ group :guard do
 end
 
 platform :rbx do
-  gem "rubysl"
+  gem 'rubysl'
+  gem 'rubysl-json'
 end
