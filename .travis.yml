@@ -7,4 +7,4 @@ rvm:
   - rbx
   - jruby
 
-script: "rake"
+script: "bundle exec rake"
