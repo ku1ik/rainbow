@@ -17,7 +17,7 @@ module Rainbow
       end
 
       context "when subclass of String class given" do
-        class Stringgg < String; end
+        class Stringgg < ::String; end
 
         let(:string) { Stringgg.new('hello') }
 
