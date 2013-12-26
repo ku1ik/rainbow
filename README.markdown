@@ -94,7 +94,7 @@ Rainbow.enabled = true/false
 ```
 
 When disabled all the methods return an unmodified string
-(`Rainbow("hello").color(:red) == "hello").
+(`Rainbow("hello").color(:red) == "hello"`).
 
 It's enabled by default, unless STDOUT/STDERR is not a TTY or a terminal is
 dumb.
