@@ -1,3 +1,5 @@
+require 'rainbow'
+
 module Rainbow
   module String
     module InstanceMethods
