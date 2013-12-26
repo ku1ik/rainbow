@@ -2,6 +2,7 @@ Rainbow
 =======
 
 ![build status](https://secure.travis-ci.org/sickill/rainbow.png)
+[![Code Climate](https://codeclimate.com/github/sickill/rainbow.png)](https://codeclimate.com/github/sickill/rainbow)
 
 About
 -----
