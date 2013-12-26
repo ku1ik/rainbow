@@ -85,7 +85,7 @@ module Rainbow
       def initialize(ground, *values)
         raise ArgumentError.new(
           "RGB value outside 0-255 range"
-        ) if values.min < 0 or values.max > 255
+        ) if values.min < 0 || values.max > 255
 
         super(ground, 8)
         @r, @g, @b = values
