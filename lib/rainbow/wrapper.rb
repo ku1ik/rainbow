@@ -70,3 +70,7 @@ module Rainbow
   end
 
 end
+
+def Rainbow(string)
+  Rainbow::Wrapper.new(string.to_s)
+end

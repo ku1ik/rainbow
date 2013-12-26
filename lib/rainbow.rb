@@ -3,10 +3,6 @@ require 'rainbow/wrapper'
 require 'rainbow/string'
 require 'rainbow/legacy'
 
-def Rainbow(string)
-  Rainbow::Wrapper.new(string.to_s)
-end
-
 unless STDOUT.tty? && STDERR.tty?
   Rainbow.enabled = false
 end
