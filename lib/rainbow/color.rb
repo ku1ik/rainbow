@@ -4,17 +4,22 @@ module Rainbow
     attr_reader :ground
 
     def self.build(ground, values)
-      raise ArgumentError.new(
-        "Wrong number of arguments for color definition, should be 1 or 3"
-      ) unless [1, 3].include?(values.size)
+      unless [1, 3].include?(values.size)
+        fail ArgumentError,
+          "Wrong number of arguments for color definition, should be 1 or 3"
+      end
 
       color = values.size == 1 ? values.first : values
 
       case color
-        when ::Fixnum then Indexed.new(ground, color)
-        when ::Symbol then Named.new(ground, color)
-        when ::Array  then RGB.new(ground, *color)
-        when ::String then RGB.new(ground, *parse_hex_color(color))
+      when ::Fixnum
+        Indexed.new(ground, color)
+      when ::Symbol
+        Named.new(ground, color)
+      when ::Array
+        RGB.new(ground, *color)
+      when ::String
+        RGB.new(ground, *parse_hex_color(color))
       end
     end
 
@@ -59,9 +64,10 @@ module Rainbow
       }
 
       def initialize(ground, name)
-        raise ArgumentError.new(
-          "Unknown color name, valid names: #{color_names.join(', ')}"
-        ) unless color_names.include?(name)
+        unless color_names.include?(name)
+          fail ArgumentError,
+            "Unknown color name, valid names: #{color_names.join(', ')}"
+        end
 
         super(ground, NAMES[name])
       end
@@ -83,9 +89,9 @@ module Rainbow
       end
 
       def initialize(ground, *values)
-        raise ArgumentError.new(
-          "RGB value outside 0-255 range"
-        ) if values.min < 0 || values.max > 255
+        if values.min < 0 || values.max > 255
+          fail ArgumentError, "RGB value outside 0-255 range"
+        end
 
         super(ground, 8)
         @r, @g, @b = values

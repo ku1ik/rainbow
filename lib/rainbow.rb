@@ -3,17 +3,9 @@ require 'rainbow/wrapper'
 require 'rainbow/string'
 require 'rainbow/legacy'
 
-unless STDOUT.tty? && STDERR.tty?
-  Rainbow.enabled = false
-end
-
-if ENV['TERM'] == 'dumb'
-  Rainbow.enabled = false
-end
-
-if ENV['CLICOLOR_FORCE'] == '1'
-  Rainbow.enabled = true
-end
+Rainbow.enabled = false unless STDOUT.tty? && STDERR.tty?
+Rainbow.enabled = false if ENV['TERM'] == 'dumb'
+Rainbow.enabled = true if ENV['CLICOLOR_FORCE'] == '1'
 
 # On Windows systems, try to load the local ANSI support library
 require 'rbconfig'

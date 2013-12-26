@@ -89,18 +89,20 @@ describe 'Rainbow() wrapper' do
   end
 
   it 'allows chaining' do
-    result = Rainbow('hello').
-      foreground(:red).
-      bright.
-      italic.
-      background('#ff8040').
-      underline.
-      color(:blue).
-      blink.
-      inverse.
-      hide
+    result = Rainbow('hello')
+    .foreground(:red)
+    .bright
+    .italic
+    .background('#ff8040')
+    .underline
+    .color(:blue)
+    .blink
+    .inverse
+    .hide
 
-    expect(result).to eq("\e[31m\e[1m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8mhello\e[0m")
+    expect(result).to eq(
+      "\e[31m\e[1m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8mhello\e[0m"
+    )
   end
 
   context "when Rainbow is disabled" do
@@ -114,16 +116,16 @@ describe 'Rainbow() wrapper' do
     end
 
     it "allows chaining but doesn't wrap with escape codes" do
-      result = Rainbow('hello').
-        foreground(:red).
-        bright.
-        italic.
-        background('#ff8040').
-        underline.
-        color(:blue).
-        blink.
-        inverse.
-        hide
+      result = Rainbow('hello')
+      .foreground(:red)
+      .bright
+      .italic
+      .background('#ff8040')
+      .underline
+      .color(:blue)
+      .blink
+      .inverse
+      .hide
 
       expect(result).to eq('hello')
     end
