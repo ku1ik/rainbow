@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'rainbow/string'
+require 'rainbow/ext/string'
 
 describe 'String mixin' do
 

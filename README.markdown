@@ -39,10 +39,10 @@ the above example.
 
 If you prefer not to wrap every string you want to colorize with `Rainbow()`
 you can include all the rainbow methods in a String class directly by requiring
-`rainbow/string`:
+`rainbow/ext/string`:
 
 ```ruby
-require 'rainbow/string'
+require 'rainbow/ext/string'
 
 puts "this is red".color(:red) + " and " + "this on yellow bg".background(:yellow) + " and " + "even bright underlined!".underline.bright
 ```

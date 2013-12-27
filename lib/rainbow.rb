@@ -1,7 +1,7 @@
 require 'rainbow/core'
 require 'rainbow/wrapper'
-require 'rainbow/string'
 require 'rainbow/legacy'
+require 'rainbow/ext/string'
 
 Rainbow.enabled = false unless STDOUT.tty? && STDERR.tty?
 Rainbow.enabled = false if ENV['TERM'] == 'dumb'
