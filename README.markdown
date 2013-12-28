@@ -22,7 +22,7 @@ To make your string colored wrap it with `Rainbow()` presenter and call
 ```ruby
 require 'rainbow'
 
-p Rainbow("this is red").color(:red) + " and " + Rainbow("this on yellow bg").background(:yellow) + " and " + Rainbow("even bright underlined!").underline.bright
+p Rainbow("this is red").red + " and " + Rainbow("this on yellow bg").bg(:yellow) + " and " + Rainbow("even bright underlined!").underline.bright
 
 # => "\e[31mthis is red\e[0m and \e[43mthis on yellow bg\e[0m and \e[4m\e[1meven bright underlined!\e[0m"
 ```
@@ -31,8 +31,8 @@ p Rainbow("this is red").color(:red) + " and " + Rainbow("this on yellow bg").ba
 
 Rainbow presenter adds the following methods to presented string:
 
-* `foreground(color)` (with `color` and `colour` aliases)
-* `background(color)`
+* `color(c)` (with `foreground`, and `fg` aliases)
+* `background(c)` (with `bg` alias)
 * `bright`
 * `underline`
 * `blink`
@@ -40,11 +40,22 @@ Rainbow presenter adds the following methods to presented string:
 * `hide`
 * `italic` (not well supported by terminal emulators).
 
+Text color can also be changed by calling a method named by a color:
+
+* `black`
+* `red`
+* `green`
+* `yellow`
+* `blue`
+* `magenta`
+* `cyan`
+* `white`
+
 All of the methods return `self` (the presenter object) so you can chain method
 calls:
 
 ```ruby
-Rainbow("hola!").color(:blue).bright.underline
+Rainbow("hola!").blue.bright.underline
 ```
 
 ### String mixin
@@ -62,27 +73,31 @@ puts "this is red".color(:red) + " and " + "this on yellow bg".background(:yello
 This way of using Rainbow is not recommended though as it pollutes String's
 public interface with methods that are presentation specific.
 
+NOTE: the mixing doesn't include shortcut methods for changing text color, you
+should use "string".color(:blue) instead of "string".blue
+
 NOTE: the mixin is included in String by default in rainbow versions up to (and
 including) 1.99.x to not break backwards compatibility. It won't be included by
 default in rainbow 2.0.
 
 ### Color specification
 
-Both `foreground/color/colour` and `background` accept color specified in any
+Both `color` and `background` accept color specified in any
 of the following ways:
 
 * color number (where 0 is black, 1 is red, 2 is green and so on):
-  `Rainbow("hello").foreground(1)`
+  `Rainbow("hello").color(1)`
 
 * color name as a symbol (available: :black, :red, :green, :yellow, :blue,
   :magenta, :cyan, :white):
-  `Rainbow("hello").foreground(:yellow)`
+  `Rainbow("hello").color(:yellow)`
+  This can be simplified to `Rainbow("hello").yellow`
 
 * RGB triplet as separate values in the range 0-255:
-  `Rainbow("hello").foreground(115, 23, 98)`
+  `Rainbow("hello").color(115, 23, 98)`
 
 * RGB triplet as a hex string:
-  `Rainbow("hello").foreground("FFC482")` or `Rainbow("hello").foreground("#FFC482")`
+  `Rainbow("hello").color("FFC482")` or `Rainbow("hello").color("#FFC482")`
 
 When you specify a color with a RGB triplet rainbow finds the nearest match
 from 256 colors palette. Note that it requires a 256-colors capable terminal to
@@ -97,7 +112,7 @@ Rainbow.enabled = true/false
 ```
 
 When disabled all the methods return an unmodified string
-(`Rainbow("hello").color(:red) == "hello"`).
+(`Rainbow("hello").red == "hello"`).
 
 It's enabled by default, unless STDOUT/STDERR is not a TTY or a terminal is
 dumb.
@@ -115,9 +130,9 @@ rainbow_two = Rainbow.new
 
 rainbow_one.enabled = false
 
-Rainbow("hello").color(:red)          # => "\e[31mhello\e[0m" ("hello" if not on TTY)
-rainbow_one.wrap("hello").color(:red) # => "hello"
-rainbow_two.wrap("hello").color(:red) # => "\e[31mhello\e[0m" ("hello" if not on TTY)
+Rainbow("hello").red          # => "\e[31mhello\e[0m" ("hello" if not on TTY)
+rainbow_one.wrap("hello").red # => "hello"
+rainbow_two.wrap("hello").red # => "\e[31mhello\e[0m" ("hello" if not on TTY)
 ```
 
 By default each new instance inherits enabled/disabled state from the global

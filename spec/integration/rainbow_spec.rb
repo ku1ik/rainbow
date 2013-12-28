@@ -17,6 +17,11 @@ describe 'Rainbow() wrapper' do
     expect(result).to eq("\e[31mhello\e[0m")
   end
 
+  it 'allows foreground coloring directly by method name' do
+    result = Rainbow('hello').red
+    expect(result).to eq("\e[31mhello\e[0m")
+  end
+
   it 'allows foreground coloring by color name (color alias)' do
     result = Rainbow('hello').color(:red)
     expect(result).to eq("\e[31mhello\e[0m")

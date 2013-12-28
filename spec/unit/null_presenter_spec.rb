@@ -4,7 +4,7 @@ require 'rainbow/null_presenter'
 module Rainbow
   describe NullPresenter do
 
-    let(:rainbow_null_string) { described_class.new('hello') }
+    let(:presenter) { described_class.new('hello') }
 
     shared_examples_for "rainbow null string method" do
       it "doesn't wrap the text with any sgr sequence" do
@@ -16,59 +16,78 @@ module Rainbow
       end
     end
 
+    describe '#color' do
+      subject { presenter.color(:arg1, 'arg2') }
+
+      it_behaves_like "rainbow null string method"
+    end
+
     describe '#foreground' do
-      subject { rainbow_null_string.foreground(:arg1, 'arg2') }
+      subject { presenter.foreground(:arg1, 'arg2') }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe '#fg' do
+      subject { presenter.fg(:arg1, 'arg2') }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#background' do
-      subject { rainbow_null_string.background(:arg1, 'arg2') }
+      subject { presenter.background(:arg1, 'arg2') }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe '#bg' do
+      subject { presenter.bg(:arg1, 'arg2') }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#reset' do
-      subject { rainbow_null_string.reset }
+      subject { presenter.reset }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#bright' do
-      subject { rainbow_null_string.bright }
+      subject { presenter.bright }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#italic' do
-      subject { rainbow_null_string.italic }
+      subject { presenter.italic }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#underline' do
-      subject { rainbow_null_string.underline }
+      subject { presenter.underline }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#blink' do
-      subject { rainbow_null_string.blink }
+      subject { presenter.blink }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#inverse' do
-      subject { rainbow_null_string.inverse }
+      subject { presenter.inverse }
 
       it_behaves_like "rainbow null string method"
     end
 
     describe '#hide' do
-      subject { rainbow_null_string.hide }
+      subject { presenter.hide }
 
       it_behaves_like "rainbow null string method"
     end
 
+    it_behaves_like "presenter with shortcut color methods"
   end
 end

@@ -15,18 +15,20 @@ module Rainbow
       hide:      8,
     }
 
-    # Sets foreground color of this text.
-    def foreground(*values)
+    # Sets color of this text.
+    def color(*values)
       wrap_with_sgr(Color.build(:foreground, values).codes)
     end
 
-    alias_method :color, :foreground
-    alias_method :colour, :foreground
+    alias_method :foreground, :color
+    alias_method :fg, :color
 
     # Sets background color of this text.
     def background(*values)
       wrap_with_sgr(Color.build(:background, values).codes)
     end
+
+    alias_method :bg, :background
 
     # Resets terminal to default colors/backgrounds.
     #
@@ -66,6 +68,38 @@ module Rainbow
     # Hides this text (set its color to the same as background).
     def hide
       wrap_with_sgr(TERM_EFFECTS[:hide])
+    end
+
+    def black
+      color(:black)
+    end
+
+    def red
+      color(:red)
+    end
+
+    def green
+      color(:green)
+    end
+
+    def yellow
+      color(:yellow)
+    end
+
+    def blue
+      color(:blue)
+    end
+
+    def magenta
+      color(:magenta)
+    end
+
+    def cyan
+      color(:cyan)
+    end
+
+    def white
+      color(:white)
     end
 
     private

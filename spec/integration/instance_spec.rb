@@ -22,14 +22,14 @@ describe 'Custom Rainbow instance' do
     rainbow = Rainbow.new
     rainbow.enabled = true
 
-    expect(rainbow.wrap('hello').bright).to eq("\e[1mhello\e[0m")
+    expect(rainbow.wrap('hello').green).to eq("\e[32mhello\e[0m")
   end
 
   it "doesn't wrap string with any escape code when disabled" do
     rainbow = Rainbow.new
     rainbow.enabled = false
 
-    expect(rainbow.wrap('hello').bright).to eq('hello')
+    expect(rainbow.wrap('hello').green).to eq('hello')
   end
 
 end

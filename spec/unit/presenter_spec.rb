@@ -4,7 +4,7 @@ require 'rainbow/presenter'
 module Rainbow
   describe Presenter do
 
-    let(:rainbow_string) { described_class.new('hello') }
+    let(:presenter) { described_class.new('hello') }
 
     shared_examples_for "rainbow string method" do
       it "wraps the text with a sgr sequence" do
@@ -16,13 +16,7 @@ module Rainbow
       end
     end
 
-    before do
-      allow(StringUtils).to receive(:wrap_with_sgr) { '[hello]' }
-    end
-
-    describe '#foreground' do
-      subject { rainbow_string.foreground(:arg1, 'arg2') }
-
+    shared_examples_for "text color method" do
       let(:color) { double('color', codes: [1, 2]) }
 
       before do
@@ -39,9 +33,7 @@ module Rainbow
       end
     end
 
-    describe '#background' do
-      subject { rainbow_string.background(:arg1, 'arg2') }
-
+    shared_examples_for "text background method" do
       let(:color) { double('color', codes: [1, 2]) }
 
       before do
@@ -58,8 +50,42 @@ module Rainbow
       end
     end
 
+    before do
+      allow(StringUtils).to receive(:wrap_with_sgr) { '[hello]' }
+    end
+
+    describe '#color' do
+      subject { presenter.color(:arg1, 'arg2') }
+
+      it_behaves_like "text color method"
+    end
+
+    describe '#foreground' do
+      subject { presenter.foreground(:arg1, 'arg2') }
+
+      it_behaves_like "text color method"
+    end
+
+    describe '#fg' do
+      subject { presenter.fg(:arg1, 'arg2') }
+
+      it_behaves_like "text color method"
+    end
+
+    describe '#background' do
+      subject { presenter.background(:arg1, 'arg2') }
+
+      it_behaves_like "text background method"
+    end
+
+    describe '#bg' do
+      subject { presenter.bg(:arg1, 'arg2') }
+
+      it_behaves_like "text background method"
+    end
+
     describe '#reset' do
-      subject { rainbow_string.reset }
+      subject { presenter.reset }
 
       it_behaves_like "rainbow string method"
 
@@ -70,7 +96,7 @@ module Rainbow
     end
 
     describe '#bright' do
-      subject { rainbow_string.bright }
+      subject { presenter.bright }
 
       it_behaves_like "rainbow string method"
 
@@ -81,7 +107,7 @@ module Rainbow
     end
 
     describe '#italic' do
-      subject { rainbow_string.italic }
+      subject { presenter.italic }
 
       it_behaves_like "rainbow string method"
 
@@ -93,7 +119,7 @@ module Rainbow
     end
 
     describe '#underline' do
-      subject { rainbow_string.underline }
+      subject { presenter.underline }
 
       it_behaves_like "rainbow string method"
 
@@ -104,7 +130,7 @@ module Rainbow
     end
 
     describe '#blink' do
-      subject { rainbow_string.blink }
+      subject { presenter.blink }
 
       it_behaves_like "rainbow string method"
 
@@ -115,7 +141,7 @@ module Rainbow
     end
 
     describe '#inverse' do
-      subject { rainbow_string.inverse }
+      subject { presenter.inverse }
 
       it_behaves_like "rainbow string method"
 
@@ -126,7 +152,7 @@ module Rainbow
     end
 
     describe '#hide' do
-      subject { rainbow_string.hide }
+      subject { presenter.hide }
 
       it_behaves_like "rainbow string method"
 
@@ -135,6 +161,8 @@ module Rainbow
         expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [8])
       end
     end
+
+    it_behaves_like "presenter with shortcut color methods"
 
   end
 end
