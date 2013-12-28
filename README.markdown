@@ -29,7 +29,7 @@ p Rainbow("this is red").color(:red) + " and " + Rainbow("this on yellow bg").ba
 
 ### Rainbow presenter API
 
-Rainbow presenter adds following methods to presented string:
+Rainbow presenter adds the following methods to presented string:
 
 * `foreground(color)` (with `color` and `colour` aliases)
 * `background(color)`
@@ -41,7 +41,11 @@ Rainbow presenter adds following methods to presented string:
 * `italic` (not well supported by terminal emulators).
 
 All of the methods return `self` (the presenter object) so you can chain method
-calls as in the example above.
+calls:
+
+```ruby
+Rainbow("hola!").color(:blue).bright.underline
+```
 
 ### String mixin
 
@@ -58,8 +62,9 @@ puts "this is red".color(:red) + " and " + "this on yellow bg".background(:yello
 This way of using Rainbow is not recommended though as it pollutes String's
 public interface with methods that are presentation specific.
 
-NOTE: the mixin is included in String by default in rainbow 1.99 to not break
-backwards compatibility. It won't be included by default in rainbow 2.0.
+NOTE: the mixin is included in String by default in rainbow versions up to (and
+including) 1.99.x to not break backwards compatibility. It won't be included by
+default in rainbow 2.0.
 
 ### Color specification
 
