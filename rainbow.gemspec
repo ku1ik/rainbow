@@ -4,14 +4,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rainbow/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "rainbow"
-  spec.version       = Rainbow::VERSION
-  spec.authors       = ["Marcin Kulik"]
-  spec.email         = ["m@ku1ik.com"]
-  spec.description   = %q{Colorize printed text on ANSI terminals}
-  spec.summary       = %q{Colorize printed text on ANSI terminals}
-  spec.homepage      = "https://github.com/sickill/rainbow"
-  spec.license       = "MIT"
+  spec.name                  = "rainbow"
+  spec.version               = Rainbow::VERSION
+  spec.authors               = ["Marcin Kulik"]
+  spec.email                 = ["m@ku1ik.com"]
+  spec.description           = %q{Colorize printed text on ANSI terminals}
+  spec.summary               = %q{Colorize printed text on ANSI terminals}
+  spec.homepage              = "https://github.com/sickill/rainbow"
+  spec.license               = "MIT"
+  spec.required_ruby_version = '>= 1.9.2'
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
