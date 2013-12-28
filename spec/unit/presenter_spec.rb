@@ -23,7 +23,7 @@ module Rainbow
     describe '#foreground' do
       subject { rainbow_string.foreground(:arg1, 'arg2') }
 
-      let(:color) { double('color', :codes => [1, 2]) }
+      let(:color) { double('color', codes: [1, 2]) }
 
       before do
         allow(Color).to receive(:build).
@@ -42,7 +42,7 @@ module Rainbow
     describe '#background' do
       subject { rainbow_string.background(:arg1, 'arg2') }
 
-      let(:color) { double('color', :codes => [1, 2]) }
+      let(:color) { double('color', codes: [1, 2]) }
 
       before do
         allow(Color).to receive(:build).
