@@ -88,9 +88,9 @@ of the following ways:
 * color number (where 0 is black, 1 is red, 2 is green and so on):
   `Rainbow("hello").color(1)`
 
-* color name as a symbol (available: :black, :red, :green, :yellow, :blue,
+* color name as a symbol (:black, :red, :green, :yellow, :blue,
   :magenta, :cyan, :white):
-  `Rainbow("hello").color(:yellow)`
+  `Rainbow("hello").color(:yellow)`.
   This can be simplified to `Rainbow("hello").yellow`
 
 * RGB triplet as separate values in the range 0-255:
