@@ -1,3 +1,3 @@
 module Rainbow
-  VERSION = "1.99.0".freeze
+  VERSION = "1.99.1".freeze
 end

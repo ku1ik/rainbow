@@ -3,6 +3,10 @@ require 'rainbow'
 
 describe 'Rainbow() wrapper' do
 
+  before do
+    Rainbow.enabled = true
+  end
+
   it 'allows foreground coloring by color number' do
     result = Rainbow('hello').foreground(5)
     expect(result).to eq("\e[35mhello\e[0m")
@@ -106,13 +110,9 @@ describe 'Rainbow() wrapper' do
   end
 
   context "when Rainbow is disabled" do
-    before do
-      @enabled = Rainbow.enabled
-      Rainbow.enabled = false
-    end
 
-    after do
-      Rainbow.enabled = @enabled
+    before do
+      Rainbow.enabled = false
     end
 
     it "allows chaining but doesn't wrap with escape codes" do
