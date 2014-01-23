@@ -17,7 +17,7 @@ module Rainbow
     end
 
     shared_examples_for "text color method" do
-      let(:color) { double('color', codes: [1, 2]) }
+      let(:color) { double('color', :codes => [1, 2]) }
 
       before do
         allow(Color).to receive(:build).
@@ -34,7 +34,7 @@ module Rainbow
     end
 
     shared_examples_for "text background method" do
-      let(:color) { double('color', codes: [1, 2]) }
+      let(:color) { double('color', :codes => [1, 2]) }
 
       before do
         allow(Color).to receive(:build).
