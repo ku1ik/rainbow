@@ -76,9 +76,10 @@ public interface with methods that are presentation specific.
 NOTE: the mixing doesn't include shortcut methods for changing text color, you
 should use "string".color(:blue) instead of "string".blue
 
-NOTE: the mixin is included in String by default in rainbow versions up to (and
-including) 1.99.x to not break backwards compatibility. It won't be included by
-default in rainbow 2.0.
+NOTE: the mixin is included in String by default in rainbow 1.x versions.
+In rainbow 2.x the behavior was changed - if you're upgrading from 1.x to 2.x
+and you used direct String methods then you can either require the string
+extension as shown above or update your code to use the new presenter API.
 
 ### Color specification
 

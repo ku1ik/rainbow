@@ -1,6 +1,5 @@
 require 'rainbow/global'
 require 'rainbow/legacy'
-require 'rainbow/ext/string'
 
 module Rainbow
 
