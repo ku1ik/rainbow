@@ -57,3 +57,7 @@
 * `require "rainbow/string"` -> `require "rainbow/ext/string"`
 * custom rainbow wrapper instances (with separate enabled/disabled state)
 * shortcut methods for changing text color (`Rainbow("foo").red`)
+
+## 1.99.2 (2014-01-24)
+
+* bring back ruby 1.8 support
