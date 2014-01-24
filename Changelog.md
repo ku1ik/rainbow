@@ -61,3 +61,7 @@
 ## 1.99.2 (2014-01-24)
 
 * bring back ruby 1.8 support
+
+## 2.0.0 (2014-01-24)
+
+* disable string mixin by default
