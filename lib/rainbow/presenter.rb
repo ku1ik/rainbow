@@ -6,13 +6,13 @@ module Rainbow
   class Presenter < ::String
 
     TERM_EFFECTS = {
-      :reset     => 0,
-      :bright    => 1,
-      :italic    => 3,
-      :underline => 4,
-      :blink     => 5,
-      :inverse   => 7,
-      :hide      => 8,
+      reset:     0,
+      bright:    1,
+      italic:    3,
+      underline: 4,
+      blink:     5,
+      inverse:   7,
+      hide:      8,
     }
 
     # Sets color of this text.
