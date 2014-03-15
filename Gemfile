@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in rainbow.gemspec
 gemspec
 
+gem 'rake'
 gem 'coveralls', require: false
 gem 'mime-types', '< 2.0.0', platforms: [:ruby_18]
 gem 'rspec', '3.0.0beta2'
