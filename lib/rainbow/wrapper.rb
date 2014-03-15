@@ -12,9 +12,9 @@ module Rainbow
 
     def wrap(string)
       if enabled
-        Rainbow::Presenter.new(string.to_s)
+        Presenter.new(string.to_s)
       else
-        Rainbow::NullPresenter.new(string.to_s)
+        NullPresenter.new(string.to_s)
       end
     end
   end

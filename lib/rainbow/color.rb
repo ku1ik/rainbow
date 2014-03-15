@@ -12,19 +12,19 @@ module Rainbow
       color = values.size == 1 ? values.first : values
 
       case color
-      when ::Fixnum
+      when Fixnum
         Indexed.new(ground, color)
-      when ::Symbol
+      when Symbol
         Named.new(ground, color)
-      when ::Array
+      when Array
         RGB.new(ground, *color)
-      when ::String
+      when String
         RGB.new(ground, *parse_hex_color(color))
       end
     end
 
     def self.parse_hex_color(hex)
-      hex = hex.gsub('#', '')
+      hex = hex.sub(/^#/, '')
       r   = hex[0..1].to_i(16)
       g   = hex[2..3].to_i(16)
       b   = hex[4..5].to_i(16)

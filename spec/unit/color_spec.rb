@@ -12,19 +12,30 @@ module Rainbow
       context "when single fixnum given" do
         let(:values) { [1] }
 
-        it { should be_a(Color) }
+        it { should be_instance_of(Color::Indexed) }
+
+        specify { expect(subject.ground).to eq(ground) }
+        specify { expect(subject.num).to eq(1) }
       end
 
       context "when single symbol given" do
         let(:values) { [:red] }
 
-        it { should be_a(Color) }
+        it { should be_instance_of(Color::Named) }
+
+        specify { expect(subject.ground).to eq(ground) }
+        specify { expect(subject.num).to eq(1) }
       end
 
       context "when single string given" do
-        let(:values) { ['#dead00'] }
+        let(:values) { ['#deadcc'] }
 
-        it { should be_a(Color) }
+        it { should be_instance_of(Color::RGB) }
+
+        specify { expect(subject.ground).to eq(ground) }
+        specify { expect(subject.r).to eq(222) }
+        specify { expect(subject.g).to eq(173) }
+        specify { expect(subject.b).to eq(204) }
       end
 
       context "when 2 elements" do
@@ -38,7 +49,12 @@ module Rainbow
       context "when 3 elements given" do
         let(:values) { [1, 2, 3] }
 
-        it { should be_a(Color) }
+        it { should be_instance_of(Color::RGB) }
+
+        specify { expect(subject.ground).to eq(ground) }
+        specify { expect(subject.r).to eq(1) }
+        specify { expect(subject.g).to eq(2) }
+        specify { expect(subject.b).to eq(3) }
       end
 
       context "when 4 elements" do

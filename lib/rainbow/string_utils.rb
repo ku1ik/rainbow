@@ -6,15 +6,12 @@ module Rainbow
 
       seq = "\e[" + codes.join(";") + "m"
       match = string.match(/^(\e\[([\d;]+)m)*/)
+      seq_pos = match.end(0)
+      string = string[0...seq_pos] + seq + string[seq_pos..-1]
 
-      if match
-        seq_pos = match.end(0)
-        string = string[0...seq_pos] + seq + string[seq_pos..-1]
-      else
-        string = seq + string
+      unless string =~ /\e\[0m$/
+        string = string + "\e[0m"
       end
-
-      string = string + "\e[0m" unless string =~ /\e\[0m$/
 
       string
     end
