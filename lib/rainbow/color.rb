@@ -6,7 +6,7 @@ module Rainbow
     def self.build(ground, values)
       unless [1, 3].include?(values.size)
         fail ArgumentError,
-          "Wrong number of arguments for color definition, should be 1 or 3"
+             "Wrong number of arguments for color definition, should be 1 or 3"
       end
 
       color = values.size == 1 ? values.first : values
@@ -66,7 +66,7 @@ module Rainbow
       def initialize(ground, name)
         unless color_names.include?(name)
           fail ArgumentError,
-            "Unknown color name, valid names: #{color_names.join(', ')}"
+               "Unknown color name, valid names: #{color_names.join(', ')}"
         end
 
         super(ground, NAMES[name])
