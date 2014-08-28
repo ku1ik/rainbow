@@ -73,7 +73,7 @@ puts "this is red".color(:red) + " and " + "this on yellow bg".background(:yello
 This way of using Rainbow is not recommended though as it pollutes String's
 public interface with methods that are presentation specific.
 
-NOTE: the mixing doesn't include shortcut methods for changing text color, you
+NOTE: the mixin doesn't include shortcut methods for changing text color, you
 should use "string".color(:blue) instead of "string".blue
 
 NOTE: the mixin is included in String by default in rainbow 1.x versions.
