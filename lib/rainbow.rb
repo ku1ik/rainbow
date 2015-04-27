@@ -14,9 +14,9 @@ module Rainbow
   # On Windows systems, try to load the local ANSI support library if Ruby version < 2
   # Ruby 2.x on Windows includes ANSI support. 
   require 'rbconfig'
-  if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
+  if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/  && RUBY_VERSION.to_i < 2
     begin
-        require 'Win32/Console/ANSI' if RUBY_VERSION.to_i < 2
+        require 'Win32/Console/ANSI'
     rescue LoadError
       self.enabled = false
     end
