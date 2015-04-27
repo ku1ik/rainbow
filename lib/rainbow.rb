@@ -16,7 +16,7 @@ module Rainbow
   require 'rbconfig'
   if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/  && RUBY_VERSION.to_i < 2
     begin
-        require 'Win32/Console/ANSI'
+      require 'Win32/Console/ANSI'
     rescue LoadError
       self.enabled = false
     end
