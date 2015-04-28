@@ -11,9 +11,10 @@ module Rainbow
   self.enabled = false if ENV['TERM'] == 'dumb'
   self.enabled = true if ENV['CLICOLOR_FORCE'] == '1'
 
-  # On Windows systems, try to load the local ANSI support library
+  # On Windows systems, try to load the local ANSI support library if Ruby version < 2
+  # Ruby 2.x on Windows includes ANSI support. 
   require 'rbconfig'
-  if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/
+  if RbConfig::CONFIG['host_os'] =~ /mswin|mingw/  && RUBY_VERSION.to_i < 2
     begin
       require 'Win32/Console/ANSI'
     rescue LoadError
