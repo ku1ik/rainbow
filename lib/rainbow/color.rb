@@ -129,11 +129,6 @@ module Rainbow
         super(ground, *NAMES[name])
       end
 
-      private
-      def color_names
-        NAMES.keys
-      end
-
     end
 
   end
