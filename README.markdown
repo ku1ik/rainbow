@@ -50,6 +50,10 @@ Text color can also be changed by calling a method named by a color:
 * `magenta`
 * `cyan`
 * `white`
+* `aqua`
+* `silver`
+* `aliceblue`
+* `indianred`
 
 All of the methods return `self` (the presenter object) so you can chain method
 calls:
@@ -86,13 +90,16 @@ extension as shown above or update your code to use the new presenter API.
 Both `color` and `background` accept color specified in any
 of the following ways:
 
-* color number (where 0 is black, 1 is red, 2 is green and so on):
+* ANSI color number (where 0 is black, 1 is red, 2 is green and so on):
   `Rainbow("hello").color(1)`
 
-* color name as a symbol (:black, :red, :green, :yellow, :blue,
-  :magenta, :cyan, :white):
+* [ANSI color](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) name or [X11 color](https://en.wikipedia.org/wiki/X11_color_names) name as a symbol:
   `Rainbow("hello").color(:yellow)`.
-  This can be simplified to `Rainbow("hello").yellow`
+  This can be simplified to `Rainbow("hello").yellow`  
+  
+  See [Color list](#user-content-color-list) for all available color names.  
+  Note that ANSI colors can be changed in accordance with terminal setting.  
+  But X11 color is just a syntax sugar for RGB triplet. So you always see what you specified.
 
 * RGB triplet as separate values in the range 0-255:
   `Rainbow("hello").color(115, 23, 98)`
@@ -169,6 +176,159 @@ Or just install it via rubygems:
 ```ruby
 gem install rainbow
 ```
+
+## Color list
+
+### ANSI colors
+
+* `black`
+* `red`
+* `green`
+* `yellow`
+* `blue`
+* `magenta`
+* `cyan`
+* `white`
+
+### X11 colors
+
+* `aqua`
+* `aquamarine`
+* `mediumaquamarine`
+* `azure`
+* `beige`
+* `bisque`
+* `blanchedalmond`
+* `darkblue`
+* `lightblue`
+* `mediumblue`
+* `aliceblue`
+* `cadetblue`
+* `dodgerblue`
+* `midnightblue`
+* `navyblue`
+* `powderblue`
+* `royalblue`
+* `skyblue`
+* `deepskyblue`
+* `lightskyblue`
+* `slateblue`
+* `darkslateblue`
+* `mediumslateblue`
+* `steelblue`
+* `lightsteelblue`
+* `brown`
+* `rosybrown`
+* `saddlebrown`
+* `sandybrown`
+* `burlywood`
+* `chartreuse`
+* `chocolate`
+* `coral`
+* `lightcoral`
+* `cornflower`
+* `cornsilk`
+* `crimson`
+* `darkcyan`
+* `lightcyan`
+* `firebrick`
+* `fuchsia`
+* `gainsboro`
+* `gold`
+* `goldenrod`
+* `darkgoldenrod`
+* `lightgoldenrod`
+* `palegoldenrod`
+* `gray`
+* `darkgray`
+* `dimgray`
+* `lightgray`
+* `slategray`
+* `lightslategray`
+* `webgray`
+* `darkgreen`
+* `lightgreen`
+* `palegreen`
+* `darkolivegreen`
+* `yellowgreen`
+* `forestgreen`
+* `lawngreen`
+* `limegreen`
+* `seagreen`
+* `darkseagreen`
+* `lightseagreen`
+* `mediumseagreen`
+* `springgreen`
+* `mediumspringgreen`
+* `webgreen`
+* `honeydew`
+* `indianred`
+* `indigo`
+* `ivory`
+* `khaki`
+* `darkkhaki`
+* `lavender`
+* `lavenderblush`
+* `lemonchiffon`
+* `lime`
+* `linen`
+* `darkmagenta`
+* `maroon`
+* `webmaroon`
+* `mintcream`
+* `mistyrose`
+* `moccasin`
+* `oldlace`
+* `olive`
+* `olivedrab`
+* `orange`
+* `darkorange`
+* `orchid`
+* `darkorchid`
+* `mediumorchid`
+* `papayawhip`
+* `peachpuff`
+* `peru`
+* `pink`
+* `deeppink`
+* `lightpink`
+* `hotpink`
+* `plum`
+* `purple`
+* `mediumpurple`
+* `rebeccapurple`
+* `webpurple`
+* `darkred`
+* `orangered`
+* `mediumvioletred`
+* `palevioletred`
+* `salmon`
+* `darksalmon`
+* `lightsalmon`
+* `seashell`
+* `sienna`
+* `silver`
+* `darkslategray`
+* `snow`
+* `tan`
+* `teal`
+* `thistle`
+* `tomato`
+* `turquoise`
+* `darkturquoise`
+* `mediumturquoise`
+* `paleturquoise`
+* `violet`
+* `darkviolet`
+* `blueviolet`
+* `wheat`
+* `antiquewhite`
+* `floralwhite`
+* `ghostwhite`
+* `navajowhite`
+* `whitesmoke`
+* `lightyellow`
+* `greenyellow`
 
 ## Authors
 

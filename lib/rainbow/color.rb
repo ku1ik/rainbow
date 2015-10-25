@@ -15,7 +15,11 @@ module Rainbow
       when Fixnum
         Indexed.new(ground, color)
       when Symbol
-        Named.new(ground, color)
+        if Named.color_names.include?(color)
+          Named.new(ground, color)
+        else X11Named.color_names.include?(color)
+          X11Named.new(ground, color)
+        end
       when Array
         RGB.new(ground, *color)
       when String
@@ -63,19 +67,17 @@ module Rainbow
         default: 9,
       }
 
+      def self.color_names
+        NAMES.keys
+      end
+
       def initialize(ground, name)
-        unless color_names.include?(name)
+        unless Named.color_names.include?(name)
           fail ArgumentError,
-            "Unknown color name, valid names: #{color_names.join(', ')}"
+            "Unknown color name, valid names: #{Named.color_names.join(', ')}"
         end
 
         super(ground, NAMES[name])
-      end
-
-      private
-
-      def color_names
-        NAMES.keys
       end
 
     end
@@ -107,6 +109,29 @@ module Rainbow
         16 + self.class.to_ansi_domain(r) * 36 +
              self.class.to_ansi_domain(g) * 6  +
              self.class.to_ansi_domain(b)
+      end
+
+    end
+
+    class X11Named < RGB
+      include X11ColorNames
+
+      def self.color_names
+        NAMES.keys
+      end
+
+      def initialize(ground, name)
+        unless X11Named.color_names.include?(name)
+          fail ArgumentError,
+            "Unknown color name, valid names: #{X11Named.color_names.join(', ')}"
+        end
+
+        super(ground, *NAMES[name])
+      end
+
+      private
+      def color_names
+        NAMES.keys
       end
 
     end

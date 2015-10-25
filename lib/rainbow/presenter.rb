@@ -1,4 +1,5 @@
 require 'rainbow/string_utils'
+require 'rainbow/x11_color_names'
 require 'rainbow/color'
 
 module Rainbow
@@ -100,6 +101,16 @@ module Rainbow
 
     def white
       color(:white)
+    end
+
+    # We take care of X11 color method call here.
+    # Such as #aqua, #ghostwhite.
+    def method_missing(method_name,*args)
+      if Color::X11Named.color_names.include? method_name and args.empty? then
+        color(method_name)
+      else
+        super
+      end
     end
 
     private

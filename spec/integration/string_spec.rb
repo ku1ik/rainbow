@@ -15,6 +15,10 @@ describe 'String mixin' do
     expect('hello'.color(:red)).to eq(Rainbow('hello').color(:red))
   end
 
+  it 'proxies x11 color to Rainbow().color' do
+    expect('hello'.color(:midnightblue)).to eq(Rainbow('hello').color(:midnightblue))
+  end
+
   it 'proxies colour to Rainbow().colour' do
     expect('hello'.colour(:red)).to eq(Rainbow('hello').colour(:red))
   end
