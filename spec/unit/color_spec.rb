@@ -18,13 +18,24 @@ module Rainbow
         specify { expect(subject.num).to eq(1) }
       end
 
-      context "when single symbol given" do
+      context "when single ansi symbol given" do
         let(:values) { [:red] }
 
         it { should be_instance_of(Color::Named) }
 
         specify { expect(subject.ground).to eq(ground) }
         specify { expect(subject.num).to eq(1) }
+      end
+
+      context "when single x11 symbol given" do
+        let(:values) { [:midnightblue] }
+
+        it { should be_instance_of(Color::X11Named) }
+
+        specify { expect(subject.ground).to eq(ground) }
+        specify { expect(subject.r).to eq(25) }
+        specify { expect(subject.g).to eq(25) }
+        specify { expect(subject.b).to eq(112) }
       end
 
       context "when single string given" do
@@ -257,4 +268,34 @@ module Rainbow
 
     end
   end
+
+  describe Color::X11Named do
+    let(:color) { described_class.new(ground, name) }
+
+    describe '#codes' do
+      subject { color.codes }
+
+      context "when ground is :foreground" do
+        let(:name) { :midnightblue }
+        let(:ground) { :foreground }
+        it { should eq([38, 5, 18]) }
+      end
+
+      context "when ground is :background" do
+        let(:name) { :midnightblue }
+        let(:ground) { :background }
+        it { should eq([48, 5, 18]) }
+      end
+
+      context "when name is invalid" do
+        let(:name) { :foo }
+        let(:ground) { :background }
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error(ArgumentError)
+        end
+      end
+
+    end
+  end
+
 end

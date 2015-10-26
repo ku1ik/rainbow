@@ -17,12 +17,17 @@ describe 'Rainbow() wrapper' do
     expect(result).to eq("\e[31mhello\e[0m")
   end
 
-  it 'allows foreground coloring directly by method name' do
+  it 'allows foreground coloring directly by ANSI method name' do
     result = Rainbow('hello').red
     expect(result).to eq("\e[31mhello\e[0m")
   end
 
-  it 'allows foreground coloring by color name (color alias)' do
+  it 'allows foreground coloring directly by X11 method name' do
+    result = Rainbow('hello').midnightblue
+    expect(result).to eq("\e[38;5;18mhello\e[0m")
+  end
+
+  it 'allows foreground coloring by ANSI color name (color alias)' do
     result = Rainbow('hello').color(:red)
     expect(result).to eq("\e[31mhello\e[0m")
   end
@@ -30,6 +35,11 @@ describe 'Rainbow() wrapper' do
   it 'allows foreground coloring by color name (colour alias)' do
     result = Rainbow('hello').colour(:red)
     expect(result).to eq("\e[31mhello\e[0m")
+  end
+
+  it 'allows foreground coloring by X11 color name' do
+    result = Rainbow('hello').foreground(:midnightblue)
+    expect(result).to eq("\e[38;5;18mhello\e[0m")
   end
 
   it 'allows foreground coloring by color rgb' do
@@ -47,18 +57,18 @@ describe 'Rainbow() wrapper' do
     expect(result).to eq("\e[43mhello\e[0m")
   end
 
-  it 'allows background coloring by color name' do
+  it 'allows background coloring by ANSI color name' do
     result = Rainbow('hello').background(:green)
     expect(result).to eq("\e[42mhello\e[0m")
   end
 
-  it 'allows background coloring by color rgb' do
-    result = Rainbow('hello').background(255, 128, 64)
-    expect(result).to eq("\e[48;5;215mhello\e[0m")
+  it 'allows background coloring by X11 color name' do
+    result = Rainbow('hello').background(:midnightblue)
+    expect(result).to eq("\e[48;5;18mhello\e[0m")
   end
 
-  it 'allows background coloring by color rgb (hex string)' do
-    result = Rainbow('hello').background('ff8040')
+  it 'allows background coloring by color rgb' do
+    result = Rainbow('hello').background(255, 128, 64)
     expect(result).to eq("\e[48;5;215mhello\e[0m")
   end
 
