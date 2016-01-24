@@ -8,3 +8,4 @@ rvm:
   - jruby
 
 script: "bundle exec rake"
+sudo: false
