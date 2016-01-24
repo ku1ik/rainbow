@@ -65,3 +65,9 @@
 ## 2.0.0 (2014-01-24)
 
 * disable string mixin by default
+
+## 2.1.0 (2016-01-24)
+
+* added X11 color support
+* fixed `require` issue when rainbow is used as a dependency in another gem
+* improved Windows support
