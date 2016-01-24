@@ -1,4 +1,4 @@
-require 'rainbow/wrapper'
+require_relative 'wrapper'
 
 module Rainbow
 

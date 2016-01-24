@@ -1,5 +1,5 @@
-require 'rainbow/presenter'
-require 'rainbow/null_presenter'
+require_relative 'presenter'
+require_relative 'null_presenter'
 
 module Rainbow
 

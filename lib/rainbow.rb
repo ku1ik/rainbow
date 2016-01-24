@@ -1,5 +1,5 @@
-require 'rainbow/global'
-require 'rainbow/legacy'
+require_relative 'rainbow/global'
+require_relative 'rainbow/legacy'
 
 module Rainbow
 
