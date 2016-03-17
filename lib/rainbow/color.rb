@@ -17,8 +17,12 @@ module Rainbow
       when Symbol
         if Named.color_names.include?(color)
           Named.new(ground, color)
-        else X11Named.color_names.include?(color)
+        elsif X11Named.color_names.include?(color)
           X11Named.new(ground, color)
+        else
+          fail ArgumentError,
+            "Unknown color name, valid names: " +
+            (Named.color_names + X11Named.color_names).join(', ')
         end
       when Array
         RGB.new(ground, *color)
