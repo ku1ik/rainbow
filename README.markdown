@@ -155,7 +155,7 @@ instances that are used by formatters with file output.
 
 ## Windows support
 
-For Windows support, you should install the following gems:
+For Windows support on Ruby < 2.0, you should install the following gems:
 
 ```ruby
 gem install windows-pr win32console

@@ -11,11 +11,10 @@ end
 installer = Gem::DependencyInstaller.new
 
 begin
-  if RUBY_PLATFORM =~ /win32/i || RUBY_PLATFORM =~ /mingw32/i
+  if RUBY_PLATFORM =~ /mswin|cygwin|mingw/ && RUBY_VERSION.to_i < 2
     installer.install('windows-pr')
     installer.install('win32console')
   end
-
 rescue
   exit 1
 end
