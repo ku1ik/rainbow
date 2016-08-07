@@ -1,5 +1,6 @@
 require_relative 'rainbow/global'
 require_relative 'rainbow/legacy'
+require_relative 'rainbow/refinement'
 
 module Rainbow
 
@@ -12,7 +13,7 @@ module Rainbow
   self.enabled = true if ENV['CLICOLOR_FORCE'] == '1'
 
   # On Windows systems, try to load the local ANSI support library if Ruby version < 2
-  # Ruby 2.x on Windows includes ANSI support. 
+  # Ruby 2.x on Windows includes ANSI support.
   if RUBY_PLATFORM =~ /mswin|cygwin|mingw/ && RUBY_VERSION.to_i < 2
     begin
       require 'Win32/Console/ANSI'
