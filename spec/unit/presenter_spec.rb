@@ -107,7 +107,7 @@ module Rainbow
     end
 
     describe '#bold' do
-      subject { presenter.bright }
+      subject { presenter.bold }
 
       it_behaves_like "rainbow string method"
 
