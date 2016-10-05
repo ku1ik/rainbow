@@ -44,6 +44,8 @@ module Rainbow
       wrap_with_sgr(TERM_EFFECTS[:bright])
     end
 
+    alias_method :bold, :bright
+
     # Turns on italic style for this text (not well supported by terminal
     # emulators).
     def italic
