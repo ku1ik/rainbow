@@ -106,6 +106,17 @@ module Rainbow
       end
     end
 
+    describe '#bold' do
+      subject { presenter.bold }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 1 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [1])
+      end
+    end
+
     describe '#italic' do
       subject { presenter.italic }
 
