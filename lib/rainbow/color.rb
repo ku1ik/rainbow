@@ -12,7 +12,7 @@ module Rainbow
       color = values.size == 1 ? values.first : values
 
       case color
-      when Fixnum
+      when Integer
         Indexed.new(ground, color)
       when Symbol
         if Named.color_names.include?(color)
