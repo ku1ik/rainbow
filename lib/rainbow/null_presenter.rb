@@ -21,6 +21,14 @@ module Rainbow
     def cyan; self; end
     def white; self; end
 
+    def method_missing(method_name,*args)
+      if Color::X11Named.color_names.include? method_name and args.empty? then
+        self
+      else
+        super
+      end
+    end
+
     alias_method :foreground, :color
     alias_method :fg, :color
     alias_method :bg, :background
