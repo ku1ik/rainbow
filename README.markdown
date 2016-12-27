@@ -1,8 +1,8 @@
 # Rainbow
 
-[![Build Status](https://travis-ci.org/sickill/rainbow.png?branch=master)](https://travis-ci.org/sickill/rainbow)
-[![Code Climate](https://codeclimate.com/github/sickill/rainbow.png)](https://codeclimate.com/github/sickill/rainbow)
-[![Coverage Status](https://coveralls.io/repos/sickill/rainbow/badge.png)](https://coveralls.io/r/sickill/rainbow)
+[![Build Status](https://travis-ci.org/sickill/rainbow.svg?branch=master)](https://travis-ci.org/sickill/rainbow)
+[![Code Climate](https://codeclimate.com/github/sickill/rainbow.svg)](https://codeclimate.com/github/sickill/rainbow)
+[![Coverage Status](https://coveralls.io/repos/sickill/rainbow/badge.svg)](https://coveralls.io/r/sickill/rainbow)
 
 Rainbow is a ruby gem for colorizing printed text on ANSI terminals.
 
