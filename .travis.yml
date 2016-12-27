@@ -1,13 +1,6 @@
 language: ruby
 bundler_args: --without guard development
-rvm:
-  - 2.0.0
-  - 2.1.9
-  - 2.2.6
-  - 2.3.3
-  - 2.4.0
-  # - rbx
-  - jruby-9.1.6.0
+
 matrix:
   include:
     - rvm: 2.0.0
