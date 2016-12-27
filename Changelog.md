@@ -71,3 +71,9 @@
 * added X11 color support
 * fixed `require` issue when rainbow is used as a dependency in another gem
 * improved Windows support
+
+# 2.2.0 (2016-12-27)
+
+* improved Windows support
+* added Ruby 2.4 support
+* added `bold` alias method for `bright`
