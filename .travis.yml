@@ -1,11 +1,19 @@
+language: ruby
+cache:
+  - bundler
+before_install:
+  - gem update --system
+  - gem install bundler
 bundler_args: --without guard development
-rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
-  - 2.3.0
-  # - rbx
-  - jruby-9
 
-script: "bundle exec rake"
-sudo: false
+matrix:
+  include:
+    - rvm: 2.0.0
+    - rvm: 2.1.9
+    - rvm: 2.2.6
+    - rvm: 2.3.3
+    - rvm: 2.4.0
+    - rvm: jruby-9.1.6.0
+      jdk: oraclejdk8
+      env:
+        - JRUBY_OPTS=--debug
