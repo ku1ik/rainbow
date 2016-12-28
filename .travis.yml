@@ -17,3 +17,6 @@ matrix:
       jdk: oraclejdk8
       env:
         - JRUBY_OPTS=--debug
+    - rvm: 2.2.6
+      install: true # This skips 'bundle install'
+      script: gem build rainbow && gem install *.gem
