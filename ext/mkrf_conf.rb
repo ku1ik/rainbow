@@ -18,3 +18,5 @@ begin
 rescue
   exit 1
 end
+
+File.write(File.join(File.dirname(__FILE__), 'Rakefile'), "task :default\n")
