@@ -77,3 +77,7 @@
 * improved Windows support
 * added Ruby 2.4 support
 * added `bold` alias method for `bright`
+
+# 2.2.1 (2016-12-28)
+
+* fixed gem installation (2.2.0 was a broken release)
