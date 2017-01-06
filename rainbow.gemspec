@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary               = %q(Colorize printed text on ANSI terminals)
   spec.homepage              = "https://github.com/sickill/rainbow"
   spec.license               = "MIT"
-  spec.required_ruby_version = '>= 1.9.2'
+  spec.required_ruby_version = '>= 2.0.0'
 
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -20,5 +20,4 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 1.3"
-  spec.extensions    = ["ext/mkrf_conf.rb"]
 end

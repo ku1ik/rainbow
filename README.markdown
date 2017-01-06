@@ -154,16 +154,6 @@ colorize all the strings, even the ones that go through file writing
 formatters. You can easily solve that by disabling coloring for the Rainbow
 instances that are used by formatters with file output.
 
-## Windows support
-
-For Windows support on Ruby < 2.0, you should install the following gems:
-
-```ruby
-gem install windows-pr win32console
-```
-
-If the above gems aren't installed then all strings are returned unmodified.
-
 ## Installation
 
 Add it to your Gemfile:

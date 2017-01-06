@@ -81,3 +81,7 @@
 # 2.2.1 (2016-12-28)
 
 * fixed gem installation (2.2.0 was a broken release)
+
+# 3.0.0 (Unreleased)
+
+* drop MRI 1.9.3 compatibility
