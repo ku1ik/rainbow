@@ -77,6 +77,11 @@ describe 'Rainbow() wrapper' do
     expect(result).to eq("\e[1mhello\e[0m")
   end
 
+  it 'allows making text faint' do
+    result = Rainbow('hello').faint
+    expect(result).to eq("\e[2mhello\e[0m")
+  end
+
   it 'allows making text italic' do
     result = Rainbow('hello').italic
     expect(result).to eq("\e[3mhello\e[0m")
@@ -112,6 +117,8 @@ describe 'Rainbow() wrapper' do
       foreground(:red).
       bright.
       bold.
+      faint.
+      dark.
       italic.
       background('#ff8040').
       underline.
@@ -121,7 +128,7 @@ describe 'Rainbow() wrapper' do
       hide
 
     expect(result).to eq(
-      "\e[31m\e[1m\e[1m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8mhello\e[0m"
+      "\e[31m\e[1m\e[1m\e[2m\e[2m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8mhello\e[0m"
     )
   end
 
@@ -136,6 +143,8 @@ describe 'Rainbow() wrapper' do
         foreground(:red).
         bright.
         bold.
+        faint.
+        dark.
         italic.
         background('#ff8040').
         underline.

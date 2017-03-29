@@ -24,6 +24,10 @@ module Rainbow
           Rainbow(self).bright
         end
 
+        def faint
+          Rainbow(self).faint
+        end
+
         def italic
           Rainbow(self).italic
         end

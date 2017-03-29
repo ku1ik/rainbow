@@ -38,7 +38,8 @@ Rainbow presenter adds the following methods to presented string:
 * `blink`
 * `inverse`
 * `hide`
-* `italic` (not well supported by terminal emulators).
+* `faint` (not well supported by terminal emulators)
+* `italic` (not well supported by terminal emulators)
 
 Text color can also be changed by calling a method named by a color:
 

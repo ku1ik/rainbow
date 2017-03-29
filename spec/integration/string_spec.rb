@@ -31,6 +31,10 @@ describe 'String mixin' do
     expect('hello'.bright).to eq(Rainbow('hello').bright)
   end
 
+  it 'proxies faint to Rainbow().faint' do
+    expect('hello'.faint).to eq(Rainbow('hello').faint)
+  end
+
   it 'proxies italic to Rainbow().italic' do
     expect('hello'.italic).to eq(Rainbow('hello').italic)
   end

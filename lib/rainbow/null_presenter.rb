@@ -6,6 +6,7 @@ module Rainbow
     def background(*values); self; end
     def reset; self; end
     def bright; self; end
+    def faint; self; end
     def italic; self; end
     def underline; self; end
     def blink; self; end
@@ -33,6 +34,7 @@ module Rainbow
     alias_method :fg, :color
     alias_method :bg, :background
     alias_method :bold, :bright
+    alias_method :dark, :faint
 
   end
 
