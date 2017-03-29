@@ -32,6 +32,7 @@ module Rainbow
     alias_method :foreground, :color
     alias_method :fg, :color
     alias_method :bg, :background
+    alias_method :bold, :bright
 
   end
 
