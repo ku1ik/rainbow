@@ -58,6 +58,24 @@ module Rainbow
       it_behaves_like "rainbow null string method"
     end
 
+    describe '#bold' do
+      subject { presenter.bold }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe '#faint' do
+      subject { presenter.faint }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe '#dark' do
+      subject { presenter.dark }
+
+      it_behaves_like "rainbow null string method"
+    end
+
     describe '#italic' do
       subject { presenter.italic }
 

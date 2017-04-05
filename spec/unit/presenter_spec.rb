@@ -117,6 +117,28 @@ module Rainbow
       end
     end
 
+    describe '#faint' do
+      subject { presenter.faint }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 2 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [2])
+      end
+    end
+
+    describe '#dark' do
+      subject { presenter.dark }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 2 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [2])
+      end
+    end
+
     describe '#italic' do
       subject { presenter.italic }
 
