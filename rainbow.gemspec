@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary               = %q(Colorize printed text on ANSI terminals)
   spec.homepage              = "https://github.com/sickill/rainbow"
   spec.license               = "MIT"
-  spec.required_ruby_version = '>= 2.0.0'
+  spec.required_ruby_version = '>= 2.1.0'
 
   spec.files         = `git ls-files`.split($INPUT_RECORD_SEPARATOR)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

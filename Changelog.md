@@ -85,3 +85,4 @@
 # 3.0.0 (Unreleased)
 
 * drop MRI 1.9.3 compatibility
+* drop MRI 2.0 compatibility
