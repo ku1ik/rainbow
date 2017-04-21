@@ -81,3 +81,7 @@
 # 2.2.1 (2016-12-28)
 
 * fixed gem installation (2.2.0 was a broken release)
+
+# 2.2.2 (2017-04-21)
+
+* added explicit rake dependency to fix installation issue
