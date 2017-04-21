@@ -86,7 +86,7 @@
 
 * added explicit rake dependency to fix installation issue
 
-# 3.0.0 (Unreleased)
+# 3.0.0 (2017-04-21)
 
 * drop MRI 1.9.3 compatibility
 * drop MRI 2.0 compatibility
