@@ -1,5 +1,6 @@
 # Rainbow
 
+[![Gem Version](https://badge.fury.io/rb/rainbow.svg)](https://rubygems.org/gems/rainbow)
 [![Build Status](https://travis-ci.org/sickill/rainbow.svg?branch=master)](https://travis-ci.org/sickill/rainbow)
 [![Code Climate](https://codeclimate.com/github/sickill/rainbow.svg)](https://codeclimate.com/github/sickill/rainbow)
 [![Coverage Status](https://coveralls.io/repos/sickill/rainbow/badge.svg)](https://coveralls.io/r/sickill/rainbow)
