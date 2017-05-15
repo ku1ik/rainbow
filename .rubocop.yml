@@ -1,11 +1,10 @@
+inherit_from: .rubocop_todo.yml
+
 AllCops:
   TargetRubyVersion: "2.1"
   Exclude:
     - "spec/**/*"
 Documentation:
-  Enabled: false
-
-EmptyLinesAroundBody:
   Enabled: false
 
 HashSyntax:
