@@ -4,7 +4,6 @@ require 'rainbow/color'
 module Rainbow
   describe Color do
     describe '.build' do
-
       subject { described_class.build(ground, values) }
 
       let(:ground) { :foreground }
@@ -75,7 +74,6 @@ module Rainbow
           expect { subject }.to raise_error(ArgumentError)
         end
       end
-
     end
   end
 
@@ -265,7 +263,6 @@ module Rainbow
           expect { subject }.to raise_error(ArgumentError)
         end
       end
-
     end
   end
 
@@ -294,8 +291,6 @@ module Rainbow
           expect { subject }.to raise_error(ArgumentError)
         end
       end
-
     end
   end
-
 end

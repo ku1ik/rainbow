@@ -2,7 +2,6 @@ require_relative 'presenter'
 require_relative 'null_presenter'
 
 module Rainbow
-
   class Wrapper
     attr_accessor :enabled
 
@@ -18,5 +17,4 @@ module Rainbow
       end
     end
   end
-
 end

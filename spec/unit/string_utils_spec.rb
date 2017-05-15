@@ -4,7 +4,6 @@ require 'rainbow/string_utils'
 module Rainbow
   describe StringUtils do
     describe '.wrap_with_sgr' do
-
       subject { described_class.wrap_with_sgr(string, codes) }
 
       let(:string) { 'hello' }
@@ -56,7 +55,6 @@ module Rainbow
           expect(subject).to eq("\e[1;2m\e[3;4mhello\e[0m")
         end
       end
-
     end
   end
 end
