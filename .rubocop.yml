@@ -1,3 +1,7 @@
+AllCops:
+  TargetRubyVersion: "2.1"
+  Exclude:
+    - "spec/**/*"
 Documentation:
   Enabled: false
 
