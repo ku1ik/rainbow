@@ -28,3 +28,4 @@ matrix:
 branches:
   only:
     - master
+    - add_appveyor
