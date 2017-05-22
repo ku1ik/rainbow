@@ -1,0 +1,30 @@
+---
+
+version: "{build}"
+
+install:
+  - set PATH=C:\Ruby%ruby_version%\bin;%PATH%
+  - gem update --system --no-document
+  - gem install bundler --no-document
+  - bundle install --jobs 3 --retry 3 --without guard development
+
+build: off
+
+test_script:
+  - bundle exec rake
+
+environment:
+  matrix:
+    - ruby_version: '21'
+    - ruby_version: 21-x64
+    - ruby_version: '22'
+    - ruby_version: 22-x64
+    - ruby_version: '23'
+    - ruby_version: 23-x64
+
+matrix:
+  fast_finish: true
+
+branches:
+  only:
+    - master
