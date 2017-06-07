@@ -7,6 +7,9 @@ gem 'rake'
 gem 'coveralls', require: false
 gem 'rspec'
 
+gem 'windows-pr' if RUBY_PLATFORM =~ /win32/i || RUBY_PLATFORM =~ /mingw32/i
+gem 'win32console' if RUBY_PLATFORM =~ /win32/i || RUBY_PLATFORM =~ /mingw32/i
+
 group :development do
   gem 'mutant-rspec'
 end
