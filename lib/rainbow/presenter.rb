@@ -122,6 +122,10 @@ module Rainbow
       end
     end
 
+    def respond_to_missing?(method_name, *args)
+      Color::X11Named.color_names.include?(method_name) && args.empty? || super
+    end
+
     private
 
     def wrap_with_sgr(codes) #:nodoc:

@@ -80,6 +80,10 @@ module Rainbow
       end
     end
 
+    def respond_to_missing?(method_name, *args)
+      Color::X11Named.color_names.include?(method_name) && args.empty? || super
+    end
+
     alias foreground color
     alias fg color
     alias bg background
