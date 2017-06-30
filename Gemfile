@@ -12,6 +12,9 @@ end
 
 group :development do
   gem 'mutant-rspec'
+end
+
+group :test, :development do
   gem 'rubocop', '~> 0.49.1'
 end
 
