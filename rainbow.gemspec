@@ -1,4 +1,5 @@
 # coding: utf-8
+
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'rainbow/version'
@@ -8,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.version               = Rainbow::VERSION
   spec.authors               = ["Marcin Kulik"]
   spec.email                 = ["m@ku1ik.com"]
-  spec.description           = %q(Colorize printed text on ANSI terminals)
-  spec.summary               = %q(Colorize printed text on ANSI terminals)
+  spec.description           = 'Colorize printed text on ANSI terminals'
+  spec.summary               = 'Colorize printed text on ANSI terminals'
   spec.homepage              = "https://github.com/sickill/rainbow"
   spec.license               = "MIT"
   spec.required_ruby_version = '>= 2.1.0'

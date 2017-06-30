@@ -1,7 +1,6 @@
 require_relative 'wrapper'
 
 module Rainbow
-
   def self.global
     @global ||= Wrapper.new
   end
@@ -13,7 +12,6 @@ module Rainbow
   def self.enabled=(value)
     global.enabled = value
   end
-
 end
 
 def Rainbow(string)

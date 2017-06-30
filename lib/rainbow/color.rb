@@ -1,12 +1,11 @@
 module Rainbow
   class Color
-
     attr_reader :ground
 
     def self.build(ground, values)
       unless [1, 3].include?(values.size)
-        fail ArgumentError,
-          "Wrong number of arguments for color definition, should be 1 or 3"
+        raise ArgumentError,
+              "Wrong number of arguments for color definition, should be 1 or 3"
       end
 
       color = values.size == 1 ? values.first : values
@@ -25,9 +24,9 @@ module Rainbow
         elsif X11Named.color_names.include?(color)
           X11Named.new(ground, color)
         else
-          fail ArgumentError,
-            "Unknown color name, valid names: " +
-            (Named.color_names + X11Named.color_names).join(', ')
+          raise ArgumentError,
+                "Unknown color name, valid names: " +
+                (Named.color_names + X11Named.color_names).join(', ')
         end
       when Array
         RGB.new(ground, *color)
@@ -46,7 +45,6 @@ module Rainbow
     end
 
     class Indexed < Color
-
       attr_reader :num
 
       def initialize(ground, num)
@@ -59,11 +57,9 @@ module Rainbow
 
         [code]
       end
-
     end
 
     class Named < Indexed
-
       NAMES = {
         black:   0,
         red:     1,
@@ -73,8 +69,8 @@ module Rainbow
         magenta: 5,
         cyan:    6,
         white:   7,
-        default: 9,
-      }
+        default: 9
+      }.freeze
 
       def self.color_names
         NAMES.keys
@@ -82,17 +78,15 @@ module Rainbow
 
       def initialize(ground, name)
         unless Named.color_names.include?(name)
-          fail ArgumentError,
-            "Unknown color name, valid names: #{Named.color_names.join(', ')}"
+          raise ArgumentError,
+                "Unknown color name, valid names: #{Named.color_names.join(', ')}"
         end
 
         super(ground, NAMES[name])
       end
-
     end
 
     class RGB < Indexed
-
       attr_reader :r, :g, :b
 
       def self.to_ansi_domain(value)
@@ -101,7 +95,7 @@ module Rainbow
 
       def initialize(ground, *values)
         if values.min < 0 || values.max > 255
-          fail ArgumentError, "RGB value outside 0-255 range"
+          raise ArgumentError, "RGB value outside 0-255 range"
         end
 
         super(ground, 8)
@@ -116,10 +110,9 @@ module Rainbow
 
       def code_from_rgb
         16 + self.class.to_ansi_domain(r) * 36 +
-             self.class.to_ansi_domain(g) * 6  +
-             self.class.to_ansi_domain(b)
+          self.class.to_ansi_domain(g) * 6 +
+          self.class.to_ansi_domain(b)
       end
-
     end
 
     class X11Named < RGB
@@ -131,14 +124,12 @@ module Rainbow
 
       def initialize(ground, name)
         unless X11Named.color_names.include?(name)
-          fail ArgumentError,
-            "Unknown color name, valid names: #{X11Named.color_names.join(', ')}"
+          raise ArgumentError,
+                "Unknown color name, valid names: #{X11Named.color_names.join(', ')}"
         end
 
         super(ground, *NAMES[name])
       end
-
     end
-
   end
 end

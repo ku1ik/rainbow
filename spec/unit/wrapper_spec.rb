@@ -3,7 +3,6 @@ require 'rainbow/wrapper'
 
 module Rainbow
   describe Wrapper do
-
     let(:wrapper) { described_class.new(enabled) }
 
     it "is enabled by default" do
@@ -29,6 +28,5 @@ module Rainbow
         it { should be_kind_of(Rainbow::NullPresenter) }
       end
     end
-
   end
 end

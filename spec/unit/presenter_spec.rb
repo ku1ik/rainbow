@@ -3,7 +3,6 @@ require 'rainbow/presenter'
 
 module Rainbow
   describe Presenter do
-
     let(:presenter) { described_class.new('hello') }
 
     shared_examples_for "rainbow string method" do
@@ -20,16 +19,16 @@ module Rainbow
       let(:color) { double('color', codes: [1, 2]) }
 
       before do
-        allow(Color).to receive(:build).
-          with(:foreground, [:arg1, 'arg2']) { color }
+        allow(Color).to receive(:build)
+          .with(:foreground, [:arg1, 'arg2']) { color }
       end
 
       it_behaves_like "rainbow string method"
 
       it 'wraps with color codes' do
         subject
-        expect(StringUtils).to have_received(:wrap_with_sgr).
-          with('hello', [1, 2])
+        expect(StringUtils).to have_received(:wrap_with_sgr)
+          .with('hello', [1, 2])
       end
     end
 
@@ -37,16 +36,16 @@ module Rainbow
       let(:color) { double('color', codes: [1, 2]) }
 
       before do
-        allow(Color).to receive(:build).
-          with(:background, [:arg1, 'arg2']) { color }
+        allow(Color).to receive(:build)
+          .with(:background, [:arg1, 'arg2']) { color }
       end
 
       it_behaves_like "rainbow string method"
 
       it 'wraps with color codes' do
         subject
-        expect(StringUtils).to have_received(:wrap_with_sgr).
-          with('hello', [1, 2])
+        expect(StringUtils).to have_received(:wrap_with_sgr)
+          .with('hello', [1, 2])
       end
     end
 
@@ -146,8 +145,8 @@ module Rainbow
 
       it 'wraps with 3 code' do
         subject
-        expect(StringUtils).to have_received(:wrap_with_sgr).
-          with('hello', [3])
+        expect(StringUtils).to have_received(:wrap_with_sgr)
+          .with('hello', [3])
       end
     end
 
@@ -196,6 +195,5 @@ module Rainbow
     end
 
     it_behaves_like "presenter with shortcut color methods"
-
   end
 end

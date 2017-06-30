@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'rainbow'
 
 describe Sickill::Rainbow do
-
   describe '.enabled' do
     before do
       ::Rainbow.enabled = :nope
@@ -27,5 +26,4 @@ describe Sickill::Rainbow do
       expect(STDERR).to have_received(:puts)
     end
   end
-
 end

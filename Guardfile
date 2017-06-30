@@ -6,4 +6,3 @@ guard :rspec, cmd: 'rspec --color' do
   watch(%r{^lib/(.+)\.rb$})     { "spec" }
   watch('spec/spec_helper.rb')  { "spec" }
 end
-

@@ -1,7 +1,6 @@
 module Rainbow
-
   module X11ColorNames
-    NAMES= {
+    NAMES = {
       aqua: [0, 255, 255],
       aquamarine: [127, 255, 212],
       mediumaquamarine: [102, 205, 170],
@@ -147,6 +146,6 @@ module Rainbow
       yellow: [255, 255, 0],
       lightyellow: [255, 255, 224],
       greenyellow: [173, 255, 47]
-    }
+    }.freeze
   end
 end

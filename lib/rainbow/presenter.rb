@@ -3,9 +3,7 @@ require_relative 'x11_color_names'
 require_relative 'color'
 
 module Rainbow
-
   class Presenter < ::String
-
     TERM_EFFECTS = {
       reset:     0,
       bright:    1,
@@ -14,23 +12,23 @@ module Rainbow
       underline: 4,
       blink:     5,
       inverse:   7,
-      hide:      8,
-    }
+      hide:      8
+    }.freeze
 
     # Sets color of this text.
     def color(*values)
       wrap_with_sgr(Color.build(:foreground, values).codes)
     end
 
-    alias_method :foreground, :color
-    alias_method :fg, :color
+    alias foreground color
+    alias fg color
 
     # Sets background color of this text.
     def background(*values)
       wrap_with_sgr(Color.build(:background, values).codes)
     end
 
-    alias_method :bg, :background
+    alias bg background
 
     # Resets terminal to default colors/backgrounds.
     #
@@ -45,7 +43,7 @@ module Rainbow
       wrap_with_sgr(TERM_EFFECTS[:bright])
     end
 
-    alias_method :bold, :bright
+    alias bold bright
 
     # Turns on faint/dark for this text (not well supported by terminal
     # emulators).
@@ -53,7 +51,7 @@ module Rainbow
       wrap_with_sgr(TERM_EFFECTS[:faint])
     end
 
-    alias_method :dark, :faint
+    alias dark faint
 
     # Turns on italic style for this text (not well supported by terminal
     # emulators).
@@ -116,8 +114,8 @@ module Rainbow
 
     # We take care of X11 color method call here.
     # Such as #aqua, #ghostwhite.
-    def method_missing(method_name,*args)
-      if Color::X11Named.color_names.include? method_name and args.empty? then
+    def method_missing(method_name, *args)
+      if Color::X11Named.color_names.include?(method_name) && args.empty?
         color(method_name)
       else
         super
@@ -129,7 +127,5 @@ module Rainbow
     def wrap_with_sgr(codes) #:nodoc:
       self.class.new(StringUtils.wrap_with_sgr(self, [*codes]))
     end
-
   end
-
 end

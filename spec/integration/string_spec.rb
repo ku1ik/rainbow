@@ -2,7 +2,6 @@ require 'spec_helper'
 require 'rainbow/ext/string'
 
 describe 'String mixin' do
-
   before do
     Rainbow.enabled = true
   end
@@ -60,25 +59,23 @@ describe 'String mixin' do
   end
 
   context "when Rainbow is disabled" do
-
     before do
       Rainbow.enabled = false
     end
 
     it "allows chaining but doesn't wrap with escape codes" do
-      result = 'hello'.
-        foreground(:red).
-        bright.
-        italic.
-        background('#ff8040').
-        underline.
-        color(:blue).
-        blink.
-        inverse.
-        hide
+      result = 'hello'
+               .foreground(:red)
+               .bright
+               .italic
+               .background('#ff8040')
+               .underline
+               .color(:blue)
+               .blink
+               .inverse
+               .hide
 
       expect(result).to eq('hello')
     end
   end
-
 end

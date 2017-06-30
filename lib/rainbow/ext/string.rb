@@ -4,13 +4,12 @@ module Rainbow
   module Ext
     module String
       module InstanceMethods
-
         def foreground(*color)
           Rainbow(self).foreground(*color)
         end
 
-        alias_method :color, :foreground
-        alias_method :colour, :foreground
+        alias color foreground
+        alias colour foreground
 
         def background(*color)
           Rainbow(self).background(*color)
@@ -47,7 +46,6 @@ module Rainbow
         def hide
           Rainbow(self).hide
         end
-
       end
     end
   end
