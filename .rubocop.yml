@@ -3,6 +3,8 @@ inherit_from: .rubocop_todo.yml
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
+  Exclude:
+    - 'vendor/**/*'
 
   TargetRubyVersion: "2.1"
   Exclude:
