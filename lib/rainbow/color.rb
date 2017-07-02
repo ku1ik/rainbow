@@ -76,10 +76,14 @@ module Rainbow
         NAMES.keys
       end
 
+      def self.valid_names
+        color_names.join(', ')
+      end
+
       def initialize(ground, name)
         unless Named.color_names.include?(name)
           raise ArgumentError,
-                "Unknown color name, valid names: #{Named.color_names.join(', ')}"
+                "Unknown color name, valid names: #{self.class.valid_names}"
         end
 
         super(ground, NAMES[name])
@@ -122,10 +126,14 @@ module Rainbow
         NAMES.keys
       end
 
+      def self.valid_names
+        color_names.join(', ')
+      end
+
       def initialize(ground, name)
         unless X11Named.color_names.include?(name)
           raise ArgumentError,
-                "Unknown color name, valid names: #{X11Named.color_names.join(', ')}"
+                "Unknown color name, valid names: #{self.class.valid_names}"
         end
 
         super(ground, *NAMES[name])

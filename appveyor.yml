@@ -10,6 +10,9 @@ install:
 
 build: off
 
+init:
+  - git config --global core.autocrlf true
+
 test_script:
   - bundle exec rake
 
