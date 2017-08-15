@@ -56,5 +56,39 @@ module Rainbow
         end
       end
     end
+
+    describe '.uncolor' do
+      subject { described_class.uncolor(string) }
+
+      context "when string with ansi color escape is passed" do
+        let(:string) do
+          rainbow = Rainbow.new
+          rainbow.enabled = true
+          rainbow.wrap('hello').
+            foreground(:red).
+            bright.
+            bold.
+            italic.
+            background('#ff8040').
+            underline.
+            color(:blue).
+            blink.
+            inverse.
+            hide
+        end
+
+        it "removes ansi color codes" do
+          expect(subject).to eq 'hello'
+        end
+      end
+
+      context "when string with scroll down ansi escape is passed" do
+        let(:string) { "\e[1Thello" }
+
+        it "does not remove ansi scroll down escape" do
+          expect(subject).to eq "\e[1Thello"
+        end
+      end
+    end
   end
 end

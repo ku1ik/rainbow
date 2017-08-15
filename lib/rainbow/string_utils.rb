@@ -12,5 +12,10 @@ module Rainbow
 
       string
     end
+
+    def self.uncolor(string)
+      # See http://www.commandlinefu.com/commands/view/3584/remove-color-codes-special-characters-with-sed
+      string.gsub(/\e\[[0-9;]*m/, '')
+    end
   end
 end

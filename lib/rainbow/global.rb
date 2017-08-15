@@ -12,6 +12,10 @@ module Rainbow
   def self.enabled=(value)
     global.enabled = value
   end
+
+  def self.uncolor(string)
+    StringUtils.uncolor(string)
+  end
 end
 
 def Rainbow(string)
