@@ -114,6 +114,20 @@ When you specify a color with a RGB triplet rainbow finds the nearest match
 from 256 colors palette. Note that it requires a 256-colors capable terminal to
 display correctly.
 
+#### Example: Choose a random color
+
+You can pick a random color with Rainbow, it's a one-liner:
+
+```ruby
+colors = Range.new(0,7).to_a
+"whoop dee doop".chars.map { |char| Rainbow(char).color(colors.sample) }.join
+# => "\e[36mw\e[0m\e[37mh\e[0m\e[34mo\e[0m\e[34mo\e[0m\e[37mp\e[0m\e[34m \e[0m\e[36md\e[0m\e[33me\e[0m\e[34me\e[0m\e[37m \e[0m\e[32md\e[0m\e[35mo\e[0m\e[33mo\e[0m\e[36mp\e[0m"
+
+colors = [:aliceblue, :antiquewhite, :aqua, :aquamarine, :azure, :beige, :bisque, :blanchedalmond, :blueviolet]
+"whoop dee doop".chars.map { |char| Rainbow(char).color(colors.sample) }.join
+# => "\e[38;5;135mw\e[0m\e[38;5;230mh\e[0m\e[38;5;231mo\e[0m\e[38;5;135mo\e[0m\e[38;5;231mp\e[0m\e[38;5;231m \e[0m\e[38;5;122md\e[0m\e[38;5;231me\e[0m\e[38;5;231me\e[0m\e[38;5;230m \e[0m\e[38;5;122md\e[0m\e[38;5;51mo\e[0m\e[38;5;51mo\e[0m\e[38;5;51mp\e[0m"
+```
+
 ### Configuration
 
 Rainbow can be enabled/disabled globally by setting:
