@@ -7,7 +7,7 @@ require 'rainbow/version'
 Gem::Specification.new do |spec|
   spec.name                  = "rainbow"
   spec.version               = Rainbow::VERSION
-  spec.authors               = ["Marcin Kulik"]
+  spec.authors               = ["Marcin Kulik", "Olle Jonsson"]
   spec.email                 = ["m@ku1ik.com"]
   spec.description           = 'Colorize printed text on ANSI terminals'
   spec.summary               = 'Colorize printed text on ANSI terminals'
