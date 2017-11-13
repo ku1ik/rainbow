@@ -3,27 +3,34 @@
 version: "{build}"
 
 install:
-  - set PATH=C:\Ruby%ruby_version%\bin;%PATH%
-  - gem update --system --no-document
-  - gem install bundler --no-document
-  - bundle install --jobs 3 --retry 3 --without guard development
+  - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
+  - bundle config --local path vendor/bundle
+  - bundle install --jobs 3 --retry 3 --without guard development 
 
 build: off
 
+cache:
+  - vendor/bundle
+
 init:
   - git config --global core.autocrlf true
+
+before_test:
+  - ruby -v
+  - gem -v
+  - bundle -v
 
 test_script:
   - bundle exec rake
 
 environment:
   matrix:
-    - ruby_version: '21'
-    - ruby_version: 21-x64
-    - ruby_version: '22'
-    - ruby_version: 22-x64
-    - ruby_version: '23'
-    - ruby_version: 23-x64
+    - RUBY_VERSION: 21
+    - RUBY_VERSION: 21-x64
+    - RUBY_VERSION: 22
+    - RUBY_VERSION: 22-x64
+    - RUBY_VERSION: 23
+    - RUBY_VERSION: 23-x64
 
 matrix:
   fast_finish: true
