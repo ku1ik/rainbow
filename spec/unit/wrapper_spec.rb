@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rainbow/wrapper'
 
 module Rainbow
-  describe Wrapper do
+  RSpec.describe Wrapper do
     let(:wrapper) { described_class.new(enabled) }
 
     it "is enabled by default" do

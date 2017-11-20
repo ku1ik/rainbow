@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rainbow/string_utils'
 
 module Rainbow
-  describe StringUtils do
+  RSpec.describe StringUtils do
     describe '.wrap_with_sgr' do
       subject { described_class.wrap_with_sgr(string, codes) }
 

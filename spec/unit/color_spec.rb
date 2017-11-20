@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rainbow/color'
 
 module Rainbow
-  describe Color do
+  RSpec.describe Color do
     describe '.build' do
       subject { described_class.build(ground, values) }
 
@@ -77,7 +77,7 @@ module Rainbow
     end
   end
 
-  describe Color::Indexed do
+  RSpec.describe Color::Indexed do
     let(:color) { described_class.new(ground, 5) }
 
     describe '#codes' do
@@ -97,7 +97,7 @@ module Rainbow
     end
   end
 
-  describe Color::Named do
+  RSpec.describe Color::Named do
     let(:color) { described_class.new(ground, name) }
 
     describe '#codes' do
@@ -225,7 +225,7 @@ module Rainbow
     end
   end
 
-  describe Color::RGB do
+  RSpec.describe Color::RGB do
     let(:color) { described_class.new(ground, r, g, b) }
 
     describe '#codes' do
@@ -266,7 +266,7 @@ module Rainbow
     end
   end
 
-  describe Color::X11Named do
+  RSpec.describe Color::X11Named do
     let(:color) { described_class.new(ground, name) }
 
     describe '#codes' do

@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rainbow/null_presenter'
 
 module Rainbow
-  describe NullPresenter do
+  RSpec.describe NullPresenter do
     let(:presenter) { described_class.new('hello') }
 
     shared_examples_for "rainbow null string method" do
