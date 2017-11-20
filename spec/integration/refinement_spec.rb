@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-describe 'Rainbow refinement' do
+RSpec.describe 'Rainbow refinement' do
   before do
     require 'rainbow/refinement'
     
