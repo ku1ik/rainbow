@@ -90,6 +90,28 @@ In rainbow 2.x the behavior was changed - if you're upgrading from 1.x to 2.x
 and you used direct String methods then you can either require the string
 extension as shown above or update your code to use the new presenter API.
 
+### Refinement
+
+If you want to use the Refinements version, you can:
+
+```ruby
+require 'rainbow/refinement'
+using Rainbow
+puts "Hi!".green
+```
+
+Here's an IRB session example:
+
+```
+>> 'Hello, World!'.blue.bright.underline
+NoMethodError: undefined method `blue' for "Hello, World!":String
+    (ripl):1:in `<main>'
+>> using Rainbow
+=> main
+>> 'Hello, World!'.blue.bright.underline
+=> "\e[34m\e[1m\e[4mHello, World!\e[0m"
+```
+
 ### Color specification
 
 Both `color` and `background` accept color specified in any
