@@ -1,7 +1,7 @@
 require_relative 'presenter'
 require_relative 'global'
 
-if RUBY_VERSION >= '2.0'
+if RUBY_VERSION >= '2.1'
 
   module Rainbow
     refine String do

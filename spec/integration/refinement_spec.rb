@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-if RUBY_VERSION >= '2.0'
+if RUBY_VERSION >= '2.1'
   class ScopeNotIncluded
     def self.red_hello
       'hello'.red
