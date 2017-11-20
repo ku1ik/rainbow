@@ -1,20 +1,23 @@
 require 'spec_helper'
 require 'rainbow'
 
-class ScopeNotIncluded
-  def self.red_hello
-    'hello'.red
-  end
-end
-
-class ScopeIncluded
-  using Rainbow
-  def self.red_hello
-    'hello'.red
-  end
-end
-
 describe 'Rainbow refinement' do
+  before do
+    require 'rainbow/refinement'
+    
+    class ScopeNotIncluded
+      def self.red_hello
+        'hello'.red
+      end
+    end
+
+    class ScopeIncluded
+      using Rainbow
+      def self.red_hello
+        'hello'.red
+      end
+    end
+  end
 
   it 'is not active by default' do
     expect do

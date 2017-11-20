@@ -1,6 +1,5 @@
 require_relative 'rainbow/global'
 require_relative 'rainbow/legacy'
-require_relative 'rainbow/refinement'
 
 module Rainbow
   def self.new
