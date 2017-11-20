@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-describe 'uncolor method' do
+RSpec.describe 'uncolor method' do
 
   it 'strips ansi color escape code' do
     expect(Rainbow.uncolor("\e[35mhello\e[0mm")).to eq 'hellom'

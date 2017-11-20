@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'rainbow/presenter'
 
 module Rainbow
-  describe Presenter do
+  RSpec.describe Presenter do
     let(:presenter) { described_class.new('hello') }
 
     shared_examples_for "rainbow string method" do

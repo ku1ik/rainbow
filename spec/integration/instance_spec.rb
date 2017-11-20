@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-describe 'Custom Rainbow instance' do
+RSpec.describe 'Custom Rainbow instance' do
   it 'inherits enabled state from the global instance' do
     Rainbow.enabled = :yep
     expect(Rainbow.new.enabled).to eq(:yep)

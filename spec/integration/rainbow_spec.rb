@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-describe 'Rainbow() wrapper' do
+RSpec.describe 'Rainbow() wrapper' do
   before do
     Rainbow.enabled = true
   end

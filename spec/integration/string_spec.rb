@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow/ext/string'
 
-describe 'String mixin' do
+RSpec.describe 'String mixin' do
   before do
     Rainbow.enabled = true
   end

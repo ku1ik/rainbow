@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rainbow'
 
-describe Sickill::Rainbow do
+RSpec.describe Sickill::Rainbow do
   describe '.enabled' do
     before do
       ::Rainbow.enabled = :nope
