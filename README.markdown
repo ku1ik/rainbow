@@ -67,29 +67,6 @@ calls:
 Rainbow("hola!").blue.bright.underline
 ```
 
-### String mixin
-
-If you don't like wrapping every string you want to colorize with `Rainbow()`
-you can include all the rainbow presenter methods directly in a String class by
-requiring `rainbow/ext/string`:
-
-```ruby
-require 'rainbow/ext/string'
-
-puts "this is red".color(:red) + " and " + "this on yellow bg".background(:yellow) + " and " + "even bright underlined!".underline.bright
-```
-
-This way of using Rainbow is not recommended though as it pollutes String's
-public interface with methods that are presentation specific.
-
-NOTE: the mixin doesn't include shortcut methods for changing text color, you
-should use "string".color(:blue) instead of "string".blue
-
-NOTE: the mixin is included in String by default in rainbow 1.x versions.
-In rainbow 2.x the behavior was changed - if you're upgrading from 1.x to 2.x
-and you used direct String methods then you can either require the string
-extension as shown above or update your code to use the new presenter API.
-
 ### Refinement
 
 If you want to use the Refinements version, you can:
