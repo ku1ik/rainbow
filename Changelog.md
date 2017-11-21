@@ -1,9 +1,10 @@
 # Rainbow changelog
 
-## 3.0.0 (2017-04-21)
+## 3.0.0 (2017-10-24)
 
-* drop MRI 1.9.3 compatibility
-* drop MRI 2.0 compatibility
+* dropped MRI 1.9.3 compatibility
+* dropped MRI 2.0 compatibility
+* removed rake dependency
 
 ## 2.2.2 (2017-04-21)
 
