@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rainbow.gemspec
 gemspec
 
 gem 'rake'
@@ -15,7 +14,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rubocop', '~> 0.49.1'
+  gem 'rubocop', '~> 0.51.0'
 end
 
 group :guard do
