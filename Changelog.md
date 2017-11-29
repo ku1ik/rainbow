@@ -1,10 +1,12 @@
 # Rainbow changelog
 
-## 3.0.0 (2017-10-24)
+## 3.0.0 (2017-11-29)
 
+* added String refinement
+* added new `Rainbow.uncolor` method
 * dropped MRI 1.9.3 compatibility
 * dropped MRI 2.0 compatibility
-* removed rake dependency
+* removed Rake dependency
 
 ## 2.2.2 (2017-04-21)
 
