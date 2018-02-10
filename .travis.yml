@@ -10,12 +10,13 @@ bundler_args: --without guard development
 matrix:
   include:
     - rvm: 2.1.10
-    - rvm: 2.2.7
-    - rvm: 2.3.4
-    - rvm: 2.4.1
+    - rvm: 2.2.9
+    - rvm: 2.3.6
+    - rvm: 2.4.3
+    - rvm: 2.5.0
     - rvm: jruby-9.1.14.0
       jdk: oraclejdk8
-    - rvm: 2.2.7
+    - rvm: 2.2.9
       install: true # This skips 'bundle install'
       script: gem build rainbow && gem install *.gem
 
