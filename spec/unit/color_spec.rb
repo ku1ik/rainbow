@@ -37,7 +37,7 @@ module Rainbow
         specify { expect(subject.b).to eq(112) }
       end
 
-      context "when single string given" do
+      context "when single hexadecimal string given" do
         let(:values) { ['#deadcc'] }
 
         it { should be_instance_of(Color::RGB) }
@@ -46,6 +46,14 @@ module Rainbow
         specify { expect(subject.r).to eq(222) }
         specify { expect(subject.g).to eq(173) }
         specify { expect(subject.b).to eq(204) }
+      end
+
+      context "when single non hexadecimal string given" do
+        let(:values) { ['green'] }
+
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error(ArgumentError)
+        end
       end
 
       context "when 2 elements" do
