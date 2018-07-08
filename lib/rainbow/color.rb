@@ -36,6 +36,11 @@ module Rainbow
     end
 
     def self.parse_hex_color(hex)
+      unless hex =~ /^#?[a-f0-9]{6}/i
+        raise ArgumentError,
+              "Invalid hexadecimal RGB triplet. Valid format: /^#?[a-f0-9]{6}/i"
+      end
+
       hex = hex.sub(/^#/, '')
       r   = hex[0..1].to_i(16)
       g   = hex[2..3].to_i(16)
