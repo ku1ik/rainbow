@@ -74,7 +74,9 @@ module Rainbow
             color(:blue).
             blink.
             inverse.
-            hide
+            hide.
+            cross_out.
+            strike
         end
 
         it "removes ansi color codes" do
