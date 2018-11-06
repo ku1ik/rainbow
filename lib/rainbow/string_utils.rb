@@ -4,13 +4,12 @@ module Rainbow
       return string if codes.empty?
 
       seq = "\e[" + codes.join(";") + "m"
-      match = string.match(/^(\e\[([\d;]+)m)*/)
-      seq_pos = match.end(0)
-      string = string[0...seq_pos] + seq + string[seq_pos..-1]
 
-      string += "\e[0m" unless string =~ /\e\[0m$/
+      string = string.sub(/^(\e\[([\d;]+)m)*/) { |m| m + seq }
 
-      string
+      return string if string.end_with? "\e[0m"
+
+      string + "\e[0m"
     end
 
     def self.uncolor(string)
