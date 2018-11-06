@@ -37,6 +37,14 @@ module Rainbow
         specify { expect(subject.b).to eq(112) }
       end
 
+      context "when single non-existent color symbol given" do
+        let(:values) { [:snowbonk] }
+
+        it 'raises ArgumentError' do
+          expect { subject }.to raise_error(ArgumentError)
+        end
+      end
+
       context "when single hexadecimal string given" do
         let(:values) { ['#deadcc'] }
 
