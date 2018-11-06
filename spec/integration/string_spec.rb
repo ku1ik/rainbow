@@ -58,6 +58,14 @@ RSpec.describe 'String mixin' do
     expect('hello'.reset).to eq(Rainbow('hello').reset)
   end
 
+  it 'proxies cross_out to Rainbow().cross_out' do
+    expect('hello'.cross_out).to eq(Rainbow('hello').cross_out)
+  end
+
+  it 'proxies strike to Rainbow().strike_out' do
+    expect('hello'.strike).to eq(Rainbow('hello').strike)
+  end
+
   context "when Rainbow is disabled" do
     before do
       Rainbow.enabled = false
@@ -74,6 +82,8 @@ RSpec.describe 'String mixin' do
                .blink
                .inverse
                .hide
+               .cross_out
+               .strike
 
       expect(result).to eq('hello')
     end

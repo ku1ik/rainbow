@@ -106,6 +106,16 @@ RSpec.describe 'Rainbow() wrapper' do
     expect(result).to eq("\e[8mhello\e[0m")
   end
 
+  it 'allows making text crossed out' do
+    result = Rainbow('hello').cross_out
+    expect(result).to eq("\e[9mhello\e[0m")
+  end
+
+  it 'allows making text stricken' do
+    result = Rainbow('hello').strike
+    expect(result).to eq("\e[9mhello\e[0m")
+  end
+
   it 'allows resetting all the attributes' do
     result = Rainbow('hello').reset
     expect(result).to eq("\e[0mhello\e[0m")
@@ -125,9 +135,11 @@ RSpec.describe 'Rainbow() wrapper' do
              .blink
              .inverse
              .hide
+             .cross_out
+             .strike
 
     expect(result).to eq(
-      "\e[31m\e[1m\e[1m\e[2m\e[2m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8mhello\e[0m"
+      "\e[31m\e[1m\e[1m\e[2m\e[2m\e[3m\e[48;5;215m\e[4m\e[34m\e[5m\e[7m\e[8m\e[9m\e[9mhello\e[0m"
     )
   end
 
@@ -150,6 +162,7 @@ RSpec.describe 'Rainbow() wrapper' do
                .blink
                .inverse
                .hide
+               .cross_out
 
       expect(result).to eq('hello')
     end

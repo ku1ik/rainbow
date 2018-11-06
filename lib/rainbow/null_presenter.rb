@@ -40,6 +40,10 @@ module Rainbow
       self
     end
 
+    def cross_out
+      self
+    end
+
     def black
       self
     end
@@ -89,5 +93,6 @@ module Rainbow
     alias bg background
     alias bold bright
     alias dark faint
+    alias strike cross_out
   end
 end

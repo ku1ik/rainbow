@@ -105,6 +105,18 @@ module Rainbow
       it_behaves_like "rainbow null string method"
     end
 
+    describe "#cross_out" do
+      subject { presenter.cross_out }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe "#strike" do
+      subject { presenter.strike }
+
+      it_behaves_like "rainbow null string method"
+    end
+
     it_behaves_like "presenter with shortcut color methods"
   end
 end

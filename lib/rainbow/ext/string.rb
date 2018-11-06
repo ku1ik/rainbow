@@ -46,6 +46,12 @@ module Rainbow
         def hide
           Rainbow(self).hide
         end
+
+        def cross_out
+          Rainbow(self).cross_out
+        end
+
+        alias strike cross_out
       end
     end
   end

@@ -194,6 +194,28 @@ module Rainbow
       end
     end
 
+    describe '#cross_out' do
+      subject { presenter.cross_out }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 9 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [9])
+      end
+    end
+
+    describe '#strike' do
+      subject { presenter.strike }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 9 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [9])
+      end
+    end
+
     it_behaves_like "presenter with shortcut color methods"
   end
 end
