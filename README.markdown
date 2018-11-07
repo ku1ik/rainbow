@@ -44,6 +44,7 @@ Rainbow presenter adds the following methods to presented string:
 * `hide`
 * `faint` (not well supported by terminal emulators)
 * `italic` (not well supported by terminal emulators)
+* `cross_out`, `strike`
 
 Text color can also be changed by calling a method named by a color:
 
