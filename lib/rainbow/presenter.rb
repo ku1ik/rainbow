@@ -5,14 +5,14 @@ require_relative 'color'
 module Rainbow
   class Presenter < ::String
     TERM_EFFECTS = {
-      reset:     0,
-      bright:    1,
-      faint:     2,
-      italic:    3,
+      reset: 0,
+      bright: 1,
+      faint: 2,
+      italic: 3,
       underline: 4,
-      blink:     5,
-      inverse:   7,
-      hide:      8,
+      blink: 5,
+      inverse: 7,
+      hide: 8,
       cross_out: 9
     }.freeze
 
