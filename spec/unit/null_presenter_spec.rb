@@ -118,5 +118,13 @@ module Rainbow
     end
 
     it_behaves_like "presenter with shortcut color methods"
+
+    describe "#method_missing" do
+      it "fails regularly when not caught" do
+        expect {
+          presenter.trololol
+        }.to raise_error(NoMethodError)
+      end
+    end
   end
 end
