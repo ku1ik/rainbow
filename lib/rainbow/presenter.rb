@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'string_utils'
 require_relative 'x11_color_names'
 require_relative 'color'

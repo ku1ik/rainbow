@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rainbow
   class NullPresenter < ::String
     def color(*_values)

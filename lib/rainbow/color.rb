@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rainbow
   class Color
     attr_reader :ground
@@ -103,7 +105,7 @@ module Rainbow
       end
 
       def initialize(ground, *values)
-        if values.min < 0 || values.max > 255
+        if values.min.negative? || values.max > 255
           raise ArgumentError, "RGB value outside 0-255 range"
         end
 
