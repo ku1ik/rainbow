@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rainbow
   class StringUtils
     def self.wrap_with_sgr(string, codes)

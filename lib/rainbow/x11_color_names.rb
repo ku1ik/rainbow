@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Rainbow
   module X11ColorNames
     NAMES = {
