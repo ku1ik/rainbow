@@ -59,4 +59,6 @@ module Rainbow
   end
 end
 
-::String.send(:include, Rainbow::Ext::String::InstanceMethods)
+class String
+  include Rainbow::Ext::String::InstanceMethods
+end
