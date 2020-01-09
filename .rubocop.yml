@@ -7,14 +7,14 @@ AllCops:
   Exclude:
     - "spec/**/*"
     - "vendor/**/*"
-Documentation:
+Style/Documentation:
   Enabled: false
 
-HashSyntax:
+Style/HashSyntax:
   Enabled: false
 
-MethodName:
+Naming/MethodName:
   Enabled: false
 
-StringLiterals:
+Style/StringLiterals:
   Enabled: false
