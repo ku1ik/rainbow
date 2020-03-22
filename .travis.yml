@@ -13,7 +13,7 @@ matrix:
     - rvm: 2.7
     - rvm: jruby-9.1.17.0 # ruby 2.3
       jdk: openjdk8
-    - rvm: jruby-9.2.9.0 # ruby 2.5
+    - rvm: jruby-9.2.11.0 # ruby 2.5
       jdk: oraclejdk9
     - rvm: 2.3
       install: true # This skips 'bundle install'
