@@ -1,5 +1,11 @@
 # Rainbow changelog
 
+## 3.1.0 (2020-08-26)
+
+- added `cross_out` aka `strike`
+- hexadecimal color names supported better, see #83
+- gemspec: list files using a Ruby expression, avoiding git
+
 ## 3.0.0 (2017-11-29)
 
 * added String refinement
