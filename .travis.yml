@@ -15,6 +15,7 @@ matrix:
       jdk: openjdk8
     - rvm: jruby-9.2.11.0 # ruby 2.5
       jdk: oraclejdk9
+    - truffleruby-head
     - rvm: 2.3
       install: true # This skips 'bundle install'
       script: gem build rainbow && gem install *.gem
