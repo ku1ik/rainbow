@@ -16,7 +16,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'rubocop', require: false
+  gem 'rubocop', '0.81.0', require: false # This version supports Ruby 2.3
 end
 
 group :guard do
