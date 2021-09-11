@@ -29,6 +29,8 @@ puts Rainbow("this is red").red + " and " + Rainbow("this on yellow bg").bg(:yel
 # => "\e[31mthis is red\e[0m and \e[43mthis on yellow bg\e[0m and \e[4m\e[1meven bright underlined!\e[0m"
 ```
 
+![Screenshot of the previous code in a terminal](https://user-images.githubusercontent.com/132/132943811-93747cc5-bdaf-43a2-a1a4-a1f18e805eba.png)
+
 Or, [watch this video example](https://asciinema.org/a/J928KpHoUQ0sl54ulOSOLE71E?rows=20&speed=2.5)
 
 ### Rainbow presenter API
