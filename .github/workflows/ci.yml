@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: ['master']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        ruby: [2.6, 2.7, '3.0', jruby, truffleruby]
+        exclude:
+          - { os: windows-latest, ruby: truffleruby }
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Run test with Coveralls
+        run: bundle exec rake
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.ruby == '3.0' }}
+        env:
+          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      - name: Run test
+        run: bundle exec rake
+        if: ${{ !(matrix.os == 'ubuntu-latest' && matrix.ruby == '3.0') }}

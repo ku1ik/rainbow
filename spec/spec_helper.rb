@@ -1,4 +1,4 @@
-if ENV["CI"] && (!defined?(RUBY_ENGINE) || RUBY_ENGINE == "ruby")
+if ENV['COVERALLS_REPO_TOKEN']
   require 'coveralls'
   Coveralls.wear!
 end
