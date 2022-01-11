@@ -20,8 +20,6 @@ Gem::Specification.new do |spec|
     README.markdown
     LICENSE
   ]
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
   spec.add_development_dependency "bundler", [">= 1.3", "< 3"]
 end
