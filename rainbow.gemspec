@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.summary               = 'Colorize printed text on ANSI terminals'
   spec.homepage              = "https://github.com/sickill/rainbow"
   spec.license               = "MIT"
-  spec.required_ruby_version = '>= 2.3.0'
+  spec.required_ruby_version = '>= 2.4.0'
 
   spec.files = Dir['lib/**/*'] + %w[
     Changelog.md
