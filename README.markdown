@@ -100,10 +100,10 @@ of the following ways:
 
 * [ANSI color](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) name or [X11 color](https://en.wikipedia.org/wiki/X11_color_names) name as a symbol:
   `Rainbow("hello").color(:yellow)`.
-  This can be simplified to `Rainbow("hello").yellow`
-
-  See [Color list](#user-content-color-list) for all available color names.
-  Note that ANSI colors can be changed in accordance with terminal setting.
+  This can be simplified to `Rainbow("hello").yellow`  
+  
+  See [Color list](#user-content-color-list) for all available color names.  
+  Note that ANSI colors can be changed in accordance with terminal setting.  
   But X11 color is just a syntax sugar for RGB triplet. So you always see what you specified.
 
 * RGB triplet as separate values in the range 0-255:
