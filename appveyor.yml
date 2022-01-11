@@ -5,7 +5,8 @@ version: "{build}"
 install:
   - set PATH=C:\Ruby%RUBY_VERSION%\bin;%PATH%
   - bundle config --local path vendor/bundle
-  - bundle install --jobs 3 --retry 3 --without guard development
+  - bundle config set --local without 'guard development'
+  - bundle install --jobs 3 --retry 3
 
 build: off
 
