@@ -7,6 +7,12 @@ AllCops:
   Exclude:
     - "spec/**/*"
     - "vendor/**/*"
+
+# Prevents Ruby 3.1 incompatibility error. You can enable this cop when Ruby 2.4 support is dropped.
+# See https://github.com/rubocop/rubocop/issues/10258
+Layout/BlockAlignment:
+  Enabled: false
+
 Style/Documentation:
   Enabled: false
 
@@ -33,3 +39,18 @@ Lint/RaiseException:
 
 Lint/StructNewOverride:
   Enabled: true
+
+Style/GlobalStdStream:
+  Enabled: false
+
+Style/StringConcatenation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/OptionalBooleanParameter:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
