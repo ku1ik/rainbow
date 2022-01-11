@@ -1,10 +1,17 @@
 # Rainbow changelog
 
-## 3.1.0 (2020-08-26)
+## 3.1.1 (2021-01-11)
 
+- fix: Ensure `files` directive in gemspec adds all files 
+
+## 3.1.0 (2021-01-11)
+
+- Bad release: superseded by 3.1.1.
 - added `cross_out` aka `strike`
 - hexadecimal color names supported better, see #83
 - gemspec: list files using a Ruby expression, avoiding git
+
+(2020-08-26 was the planned release date, but the real release date is reflected in the heading.)
 
 ## 3.0.0 (2017-11-29)
 
