@@ -1,5 +1,9 @@
 # Rainbow changelog
 
+## Unreleased 
+
+- Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
+
 ## 3.1.1 (2021-01-11)
 
 - fix: Ensure `files` directive in gemspec adds all files 

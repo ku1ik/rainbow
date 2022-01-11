@@ -23,8 +23,3 @@ group :guard do
   gem 'guard'
   gem 'guard-rspec'
 end
-
-platform :rbx do
-  gem 'json'
-  gem 'rubysl'
-end
