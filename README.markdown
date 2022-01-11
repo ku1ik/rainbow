@@ -1,8 +1,6 @@
 # Rainbow
 
 [![Gem Version](https://badge.fury.io/rb/rainbow.svg)](https://rubygems.org/gems/rainbow)
-[![Build Status](https://travis-ci.org/sickill/rainbow.svg?branch=master)](https://travis-ci.org/sickill/rainbow)
-[![Build status](https://ci.appveyor.com/api/projects/status/vq4acb2c38642s5q?svg=true)](https://ci.appveyor.com/project/sickill/rainbow)
 [![Code Climate](https://codeclimate.com/github/sickill/rainbow.svg)](https://codeclimate.com/github/sickill/rainbow)
 [![Coverage Status](https://coveralls.io/repos/sickill/rainbow/badge.svg)](https://coveralls.io/r/sickill/rainbow)
 
@@ -102,10 +100,10 @@ of the following ways:
 
 * [ANSI color](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors) name or [X11 color](https://en.wikipedia.org/wiki/X11_color_names) name as a symbol:
   `Rainbow("hello").color(:yellow)`.
-  This can be simplified to `Rainbow("hello").yellow`  
-  
-  See [Color list](#user-content-color-list) for all available color names.  
-  Note that ANSI colors can be changed in accordance with terminal setting.  
+  This can be simplified to `Rainbow("hello").yellow`
+
+  See [Color list](#user-content-color-list) for all available color names.
+  Note that ANSI colors can be changed in accordance with terminal setting.
   But X11 color is just a syntax sugar for RGB triplet. So you always see what you specified.
 
 * RGB triplet as separate values in the range 0-255:
