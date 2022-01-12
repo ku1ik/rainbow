@@ -4,11 +4,11 @@
 
 - Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
 
-## 3.1.1 (2021-01-11)
+## 3.1.1 (2022-01-11)
 
 - fix: Ensure `files` directive in gemspec adds all files 
 
-## 3.1.0 (2021-01-11)
+## 3.1.0 (2022-01-11)
 
 - Bad release: superseded by 3.1.1.
 - added `cross_out` aka `strike`
