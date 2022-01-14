@@ -15,11 +15,7 @@ Gem::Specification.new do |spec|
   spec.license               = "MIT"
   spec.required_ruby_version = '>= 2.4.0'
 
-  spec.files = Dir['lib/**/*'] + %w[
-    Changelog.md
-    README.markdown
-    LICENSE
-  ]
+  spec.files = Dir['lib/**/*', 'Changelog.md', 'README.markdown', 'LICENSE']
   spec.require_paths = ["lib"]
   spec.add_development_dependency "bundler", [">= 1.3", "< 3"]
 end
