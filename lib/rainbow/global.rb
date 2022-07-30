@@ -20,6 +20,6 @@ module Rainbow
   end
 end
 
-def Rainbow(string)
+def Rainbow(string) # rubocop:disable Naming/MethodName
   Rainbow.global.wrap(string.to_s)
 end
