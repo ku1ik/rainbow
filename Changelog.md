@@ -1,12 +1,17 @@
 # Rainbow changelog
 
-## Unreleased 
+## Unreleased
 
-- Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
+- Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius.
+- Dropped MRI 2.4 compatibility
+- Dropped MRI 2.5 compatibility
+- Upgrade rubocop version to 1.32.0
+- Regenerate default .rubocop and .rubocop_todo.yml(rubocop --init && rubocop --auto-gen-config) and lint code with `rubocop -A`
+- Add bin/console and bin/setup
 
 ## 3.1.1 (2022-01-11)
 
-- fix: Ensure `files` directive in gemspec adds all files 
+- fix: Ensure `files` directive in gemspec adds all files
 
 ## 3.1.0 (2022-01-11)
 
