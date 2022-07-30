@@ -27,8 +27,7 @@ module Rainbow
           X11Named.new(ground, color)
         else
           raise ArgumentError,
-                "Unknown color name, valid names: " +
-                (Named.color_names + X11Named.color_names).join(', ')
+                "Unknown color name, valid names: #{(Named.color_names + X11Named.color_names).join(', ')}"
         end
       when Array
         RGB.new(ground, *color)
@@ -43,7 +42,7 @@ module Rainbow
               "Invalid hexadecimal RGB triplet. Valid format: /^#?[a-f0-9]{6}/i"
       end
 
-      hex = hex.sub(/^#/, '')
+      hex = hex.sub(/^#/, "")
       r   = hex[0..1].to_i(16)
       g   = hex[2..3].to_i(16)
       b   = hex[4..5].to_i(16)
@@ -84,7 +83,7 @@ module Rainbow
       end
 
       def self.valid_names
-        color_names.join(', ')
+        color_names.join(", ")
       end
 
       def initialize(ground, name)
@@ -105,9 +104,7 @@ module Rainbow
       end
 
       def initialize(ground, *values)
-        if values.min.negative? || values.max > 255
-          raise ArgumentError, "RGB value outside 0-255 range"
-        end
+        raise ArgumentError, "RGB value outside 0-255 range" if values.min.negative? || values.max > 255
 
         super(ground, 8)
         @r, @g, @b = values
@@ -134,7 +131,7 @@ module Rainbow
       end
 
       def self.valid_names
-        color_names.join(', ')
+        color_names.join(", ")
       end
 
       def initialize(ground, name)

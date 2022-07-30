@@ -1,9 +1,11 @@
-require 'spec_helper'
-require 'rainbow/color'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "rainbow/color"
 
 module Rainbow
   RSpec.describe Color do
-    describe '.build' do
+    describe ".build" do
       subject { described_class.build(ground, values) }
 
       let(:ground) { :foreground }
@@ -40,13 +42,13 @@ module Rainbow
       context "when single non-existent color symbol given" do
         let(:values) { [:snowbonk] }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
 
       context "when single hexadecimal string given" do
-        let(:values) { ['#deadcc'] }
+        let(:values) { ["#deadcc"] }
 
         it { should be_instance_of(Color::RGB) }
 
@@ -57,9 +59,9 @@ module Rainbow
       end
 
       context "when single non hexadecimal string given" do
-        let(:values) { ['green'] }
+        let(:values) { ["green"] }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
@@ -67,7 +69,7 @@ module Rainbow
       context "when 2 elements" do
         let(:values) { [1, 2] }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
@@ -86,7 +88,7 @@ module Rainbow
       context "when 4 elements" do
         let(:values) { [1, 2, 3, 4] }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
@@ -96,7 +98,7 @@ module Rainbow
   RSpec.describe Color::Indexed do
     let(:color) { described_class.new(ground, 5) }
 
-    describe '#codes' do
+    describe "#codes" do
       subject { color.codes }
 
       context "when ground is :foreground" do
@@ -116,7 +118,7 @@ module Rainbow
   RSpec.describe Color::Named do
     let(:color) { described_class.new(ground, name) }
 
-    describe '#codes' do
+    describe "#codes" do
       subject { color.codes }
 
       context "when ground is :foreground" do
@@ -173,7 +175,7 @@ module Rainbow
         context "and name is invalid" do
           let(:name) { :foo }
 
-          it 'raises ArgumentError' do
+          it "raises ArgumentError" do
             expect { subject }.to raise_error(ArgumentError)
           end
         end
@@ -233,7 +235,7 @@ module Rainbow
         context "and name is invalid" do
           let(:name) { :foo }
 
-          it 'raises ArgumentError' do
+          it "raises ArgumentError" do
             expect { subject }.to raise_error(ArgumentError)
           end
         end
@@ -244,7 +246,7 @@ module Rainbow
   RSpec.describe Color::RGB do
     let(:color) { described_class.new(ground, r, g, b) }
 
-    describe '#codes' do
+    describe "#codes" do
       subject { color.codes }
 
       let(:ground) { :foreground }
@@ -267,7 +269,7 @@ module Rainbow
       context "when a component is lower than 0" do
         let(:r) { -1 }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
@@ -275,7 +277,7 @@ module Rainbow
       context "when a component is greater than 255" do
         let(:b) { 256 }
 
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end
@@ -285,7 +287,7 @@ module Rainbow
   RSpec.describe Color::X11Named do
     let(:color) { described_class.new(ground, name) }
 
-    describe '#codes' do
+    describe "#codes" do
       subject { color.codes }
 
       context "when ground is :foreground" do
@@ -303,7 +305,7 @@ module Rainbow
       context "when name is invalid" do
         let(:name) { :foo }
         let(:ground) { :background }
-        it 'raises ArgumentError' do
+        it "raises ArgumentError" do
           expect { subject }.to raise_error(ArgumentError)
         end
       end

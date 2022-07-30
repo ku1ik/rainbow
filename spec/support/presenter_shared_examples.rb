@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.shared_examples_for "presenter with shortcut color methods" do
   %i[black red green yellow blue magenta cyan white aqua].each do |name|
     describe "##{name}" do

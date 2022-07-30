@@ -1,25 +1,25 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gemspec
 
-gem 'rake'
+gem "rake"
 
 group :test do
-  gem 'coveralls', require: false
-  gem 'rspec'
+  gem "coveralls", require: false
+  gem "rspec"
 end
 
 group :development do
-  gem 'mutant-rspec'
+  gem "mutant-rspec"
 end
 
 group :test, :development do
-  gem 'rubocop', '1.7.0', require: false # This version supports Ruby 2.4
+  gem "rubocop", "~> 1.32", require: false # This version supports Ruby 2.6
 end
 
 group :guard do
-  gem 'guard'
-  gem 'guard-rspec'
+  gem "guard"
+  gem "guard-rspec"
 end

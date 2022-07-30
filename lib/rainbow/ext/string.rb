@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rainbow'
+require "rainbow"
 
 module Rainbow
   module Ext

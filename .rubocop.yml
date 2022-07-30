@@ -1,56 +1,15 @@
+# The behavior of RuboCop can be controlled via the .rubocop.yml
+# configuration file. It makes it possible to enable/disable
+# certain cops (checks) and to alter their behavior if they accept
+# any parameters. The file can be placed either in your home
+# directory or in some project directory.
+#
+# RuboCop will start looking for the configuration file in the directory
+# where the inspected file is and continue its way up to the root directory.
+#
+# See https://docs.rubocop.org/rubocop/configuration
+
 inherit_from: .rubocop_todo.yml
 
-AllCops:
-  DisplayCopNames: true
-  DisplayStyleGuide: true
-  TargetRubyVersion: 2.4
-  Exclude:
-    - "spec/**/*"
-    - "vendor/**/*"
-
-# Prevents Ruby 3.1 incompatibility error. You can enable this cop when Ruby 2.4 support is dropped.
-# See https://github.com/rubocop/rubocop/issues/10258
-Layout/BlockAlignment:
-  Enabled: false
-
-Style/Documentation:
-  Enabled: false
-
-Style/HashSyntax:
-  Enabled: false
-
-Naming/MethodName:
-  Enabled: false
-
 Style/StringLiterals:
-  Enabled: false
-
-Style/HashEachMethods:
-  Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
-
-Lint/RaiseException:
-  Enabled: true
-
-Lint/StructNewOverride:
-  Enabled: true
-
-Style/GlobalStdStream:
-  Enabled: false
-
-Style/StringConcatenation:
-  Enabled: false
-
-Style/IfUnlessModifier:
-  Enabled: false
-
-Style/OptionalBooleanParameter:
-  Enabled: false
-
-Lint/MissingSuper:
-  Enabled: false
+  EnforcedStyle: double_quotes

@@ -1,5 +1,7 @@
-require 'spec_helper'
-require 'rainbow/wrapper'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "rainbow/wrapper"
 
 module Rainbow
   RSpec.describe Wrapper do
@@ -9,7 +11,7 @@ module Rainbow
       expect(described_class.new.enabled).to be(true)
     end
 
-    describe '#wrap' do
+    describe "#wrap" do
       subject { wrapper.wrap(object) }
 
       let(:object) { Object.new }

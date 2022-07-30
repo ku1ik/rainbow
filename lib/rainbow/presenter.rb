@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'string_utils'
-require_relative 'x11_color_names'
-require_relative 'color'
+require_relative "string_utils"
+require_relative "x11_color_names"
+require_relative "color"
 
 module Rainbow
   class Presenter < ::String
@@ -137,7 +137,7 @@ module Rainbow
 
     private
 
-    def wrap_with_sgr(codes) #:nodoc:
+    def wrap_with_sgr(codes) # :nodoc:
       self.class.new(StringUtils.wrap_with_sgr(self, [*codes]))
     end
   end

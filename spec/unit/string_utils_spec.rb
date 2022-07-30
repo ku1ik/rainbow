@@ -1,24 +1,26 @@
-require 'spec_helper'
-require 'rainbow/string_utils'
+# frozen_string_literal: true
+
+require "spec_helper"
+require "rainbow/string_utils"
 
 module Rainbow
   RSpec.describe StringUtils do
-    describe '.wrap_with_sgr' do
+    describe ".wrap_with_sgr" do
       subject { described_class.wrap_with_sgr(string, codes) }
 
-      let(:string) { 'hello' }
+      let(:string) { "hello" }
       let(:codes) { [1] }
 
       it "doesn't mutate original string" do
         string.freeze
         expect(subject).to eq("\e[1mhello\e[0m")
-        expect(string).to eq('hello')
+        expect(string).to eq("hello")
       end
 
       context "when subclass of String class given" do
         class Stringgg < ::String; end
 
-        let(:string) { Stringgg.new('hello') }
+        let(:string) { Stringgg.new("hello") }
 
         it { should eq("\e[1mhello\e[0m") }
       end
@@ -57,30 +59,30 @@ module Rainbow
       end
     end
 
-    describe '.uncolor' do
+    describe ".uncolor" do
       subject { described_class.uncolor(string) }
 
       context "when string with ansi color escape is passed" do
         let(:string) do
           rainbow = Rainbow.new
           rainbow.enabled = true
-          rainbow.wrap('hello').
-            foreground(:red).
-            bright.
-            bold.
-            italic.
-            background('#ff8040').
-            underline.
-            color(:blue).
-            blink.
-            inverse.
-            hide.
-            cross_out.
-            strike
+          rainbow.wrap("hello")
+                 .foreground(:red)
+                 .bright
+                 .bold
+                 .italic
+                 .background("#ff8040")
+                 .underline
+                 .color(:blue)
+                 .blink
+                 .inverse
+                 .hide
+                 .cross_out
+                 .strike
         end
 
         it "removes ansi color codes" do
-          expect(subject).to eq 'hello'
+          expect(subject).to eq "hello"
         end
       end
 

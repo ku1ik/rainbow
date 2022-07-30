@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'wrapper'
+require_relative "wrapper"
 
 module Rainbow
   def self.global
