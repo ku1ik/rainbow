@@ -7,11 +7,14 @@ module Rainbow
 
       seq = "\e[" + codes.join(";") + "m"
 
-      string = string.sub(/^(\e\[([\d;]+)m)*/) { |m| m + seq }
-
-      return string if string.end_with? "\e[0m"
-
-      string + "\e[0m"
+      # Skip extending if there are no existing control sequences.
+      if string.include?("\e")
+        string = string.sub(/^(\e\[([\d;]+)m)+/) { |m| m + seq }
+        string += "\e[0m" unless string.end_with? "\e[0m"
+        string
+      else
+        seq + string + "\e[0m"
+      end
     end
 
     def self.uncolor(string)
