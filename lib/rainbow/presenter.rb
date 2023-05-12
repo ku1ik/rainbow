@@ -15,7 +15,9 @@ module Rainbow
       blink: 5,
       inverse: 7,
       hide: 8,
-      cross_out: 9
+      cross_out: 9,
+      underline2x: 21,
+      overline: 53
     }.freeze
 
     # Sets color of this text.
@@ -88,6 +90,14 @@ module Rainbow
     end
 
     alias strike cross_out
+
+    def underline2x
+      wrap_with_sgr(TERM_EFFECTS[:underline2x])
+    end
+
+    def overline
+      wrap_with_sgr(TERM_EFFECTS[:overline])
+    end
 
     def black
       color(:black)
