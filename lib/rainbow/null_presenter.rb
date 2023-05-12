@@ -46,6 +46,14 @@ module Rainbow
       self
     end
 
+    def underline2x
+      self
+    end
+
+    def overline
+      self
+    end
+
     def black
       self
     end
