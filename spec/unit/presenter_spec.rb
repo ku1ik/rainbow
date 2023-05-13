@@ -216,6 +216,28 @@ module Rainbow
       end
     end
 
+    describe '#underline2x' do
+      subject { presenter.underline2x }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 21 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [21])
+      end
+    end
+
+    describe '#overline' do
+      subject { presenter.overline }
+
+      it_behaves_like "rainbow string method"
+
+      it 'wraps with 53 code' do
+        subject
+        expect(StringUtils).to have_received(:wrap_with_sgr).with('hello', [53])
+      end
+    end
+
     it_behaves_like "presenter with shortcut color methods"
   end
 end
