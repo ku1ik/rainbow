@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email                 = ["m@ku1ik.com"]
   spec.description           = 'Colorize printed text on ANSI terminals'
   spec.summary               = 'Colorize printed text on ANSI terminals'
-  spec.homepage              = "https://github.com/sickill/rainbow"
+  spec.homepage              = "https://github.com/ku1ik/rainbow"
   spec.license               = "MIT"
   spec.required_ruby_version = '>= 2.4.0'
 
