@@ -223,4 +223,6 @@ gem install rainbow
 
 ## Authors
 
-[Marcin Kulik](http://ku1ik.com/) and [great open-source contributors](https://github.com/sickill/rainbow/graphs/contributors).
+- [Marcin Kulik](http://ku1ik.com/)
+- [Olle Jonsson](https://github.com/olleolleolle)
+- [and many contributors](https://github.com/sickill/rainbow/graphs/contributors)
