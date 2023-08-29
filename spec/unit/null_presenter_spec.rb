@@ -117,6 +117,18 @@ module Rainbow
       it_behaves_like "rainbow null string method"
     end
 
+    describe "#underline2x" do
+      subject { presenter.underline2x }
+
+      it_behaves_like "rainbow null string method"
+    end
+
+    describe "#overline" do
+      subject { presenter.overline }
+
+      it_behaves_like "rainbow null string method"
+    end
+
     it_behaves_like "presenter with shortcut color methods"
 
     describe "#method_missing" do
