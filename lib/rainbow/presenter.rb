@@ -89,55 +89,14 @@ module Rainbow
 
     alias strike cross_out
 
-    def black
-      color(:black)
-    end
-
-    def red
-      color(:red)
-    end
-
-    def green
-      color(:green)
-    end
-
-    def yellow
-      color(:yellow)
-    end
-
-    def blue
-      color(:blue)
-    end
-
-    def magenta
-      color(:magenta)
-    end
-
-    def cyan
-      color(:cyan)
-    end
-
-    def white
-      color(:white)
-    end
-
-    # We take care of X11 color method call here.
-    # Such as #aqua, #ghostwhite.
-    def method_missing(method_name, *args)
-      if Color::X11Named.color_names.include?(method_name) && args.empty?
-        color(method_name)
-      else
-        super
-      end
-    end
-
-    def respond_to_missing?(method_name, *args)
-      Color::X11Named.color_names.include?(method_name) && args.empty? || super
+    # Define foreground named color methods eg #red and #tomato
+    (Color::Named.color_names | Color::X11Named.color_names).each do |name|
+      define_method(name) { color(name) }
     end
 
     private
 
-    def wrap_with_sgr(codes) #:nodoc:
+    def wrap_with_sgr(codes) # :nodoc:
       self.class.new(StringUtils.wrap_with_sgr(self, [*codes]))
     end
   end
