@@ -4,6 +4,7 @@ require 'rainbow'
 RSpec.describe 'Rainbow refinement' do
   before do
     require 'rainbow/refinement'
+    Rainbow.enabled = true
     
     class ScopeNotIncluded
       def self.red_hello
@@ -16,6 +17,10 @@ RSpec.describe 'Rainbow refinement' do
       def self.red_hello
         'hello'.red
       end
+
+      def self.tomato_hello
+        'hello'.tomato
+      end
     end
   end
 
@@ -27,6 +32,10 @@ RSpec.describe 'Rainbow refinement' do
 
   it 'is available when used' do
     expect(ScopeIncluded.red_hello).to eq(Rainbow('hello').red)
+  end
+
+  it 'provides X11 named color methods' do
+    expect(ScopeIncluded.tomato_hello).to eq(Rainbow('hello').tomato)
   end
 
   it 'respects disabled state' do
