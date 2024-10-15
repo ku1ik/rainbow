@@ -2,6 +2,7 @@
 
 ## Unreleased 
 
+- Allow `enabled` option to be passed to `Rainbow.new`
 - Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
 
 ## 3.1.1 (2022-01-11)

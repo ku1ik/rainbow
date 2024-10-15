@@ -153,10 +153,8 @@ parts of your application you can get a new Rainbow wrapper instance for each
 of them and control the state of coloring during the runtime.
 
 ```ruby
-rainbow_one = Rainbow.new
+rainbow_one = Rainbow.new(false)
 rainbow_two = Rainbow.new
-
-rainbow_one.enabled = false
 
 Rainbow("hello").red          # => "\e[31mhello\e[0m" ("hello" if not on TTY)
 rainbow_one.wrap("hello").red # => "hello"

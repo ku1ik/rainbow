@@ -17,6 +17,12 @@ RSpec.describe 'Custom Rainbow instance' do
     expect(rainbow.enabled).to eq(:nope)
   end
 
+  it 'can be initialized with a different enabled state' do
+    Rainbow.enabled = :yep
+    rainbow = Rainbow.new(false)
+    expect(rainbow.enabled).to eq(false)
+  end
+
   it 'wraps string with escape codes when enabled' do
     rainbow = Rainbow.new
     rainbow.enabled = true
