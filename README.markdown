@@ -145,6 +145,12 @@ When disabled all the methods return an unmodified string
 It's enabled by default, unless STDOUT/STDERR is not a TTY or a terminal is
 dumb.
 
+You can temporarily enable/disable Rainbow by using the block form:
+
+```ruby
+Rainbow.with_enabled(true) { Rainbow('not blue').blue } # => 'not blue'
+```
+
 ### Advanced usage
 
 `Rainbow()` and `Rainbow.enabled` operate on the global Rainbow wrapper
