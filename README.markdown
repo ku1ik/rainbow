@@ -69,7 +69,7 @@ calls:
 Rainbow("hola!").blue.bright.underline
 ```
 
-The `Rainbow` module also provides an `uncolor` method for striping away any
+The `Rainbow` module also provides an `uncolor` method for stripping away any
 existing color or formatting. This may be handy for determining the visual
 length of strings.
 
