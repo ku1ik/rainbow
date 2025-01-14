@@ -69,6 +69,18 @@ calls:
 Rainbow("hola!").blue.bright.underline
 ```
 
+The `Rainbow` module also provides an `uncolor` method for stripping away any
+existing color or formatting. This may be handy for determining the visual
+length of strings.
+
+```ruby
+text = Rainbow("this is green!").green
+# => "\e[32mthis is green!\e[0m"
+
+Rainbow.uncolor(text)
+# => "this is green!"
+```
+
 ### Refinement
 
 If you want to use the Refinements version, you can:
