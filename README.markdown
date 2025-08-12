@@ -2,7 +2,6 @@
 
 [![Gem Version](https://badge.fury.io/rb/rainbow.svg)](https://rubygems.org/gems/rainbow)
 [![CI](https://github.com/sickill/rainbow/actions/workflows/ci.yml/badge.svg)](https://github.com/sickill/rainbow/actions/workflows/ci.yml)
-[![Code Climate](https://codeclimate.com/github/sickill/rainbow.svg)](https://codeclimate.com/github/sickill/rainbow)
 [![Coverage Status](https://coveralls.io/repos/sickill/rainbow/badge.svg)](https://coveralls.io/r/sickill/rainbow)
 
 Rainbow is a ruby gem for colorizing printed text on ANSI terminals.
