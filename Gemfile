@@ -16,6 +16,8 @@ group :development do
 end
 
 group :test, :development do
+  gem 'base64'
+  gem 'fiddle' unless RUBY_VERSION.start_with?('2.5')
   gem 'rubocop', '1.7.0', require: false # This version supports Ruby 2.4
 end
 
