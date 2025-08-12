@@ -3,6 +3,7 @@
 ## Unreleased 
 
 - Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
+- Development: Support Ruby 3.3 and 3.4 in CI.
 
 ## 3.1.1 (2022-01-11)
 
