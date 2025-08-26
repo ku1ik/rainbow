@@ -2,6 +2,8 @@
 
 ## Unreleased 
 
+- Added block methods `Rainbow.with_enabled(enabled)`/`new_with_enabled(enabled)` to temporarily
+- enable/disable Rainbow
 - Development: Drop `rbx` section in Gemfile. No continued support effort for Rubinius. 
 - Development: Support Ruby 3.3 and 3.4 in CI.
 
