@@ -7,6 +7,21 @@ RSpec.describe 'Custom Rainbow instance' do
     expect(Rainbow.new.enabled).to eq(:yep)
   end
 
+  it 'Rainbow.new_with_enabled creates instance with different enabled state' do
+    Rainbow.enabled = :ignored
+    Rainbow.new_with_enabled(true) do |rainbow|
+      expect(rainbow.enabled).to eq(true)
+    end
+
+    rainbow = Rainbow.new_with_enabled(false) do |rainbow|
+      expect(rainbow.enabled).to eq(false)
+    end
+    expect(rainbow.enabled).to eq(false)
+
+    rainbow = Rainbow.new_with_enabled(true)
+    expect(rainbow.enabled).to eq(true)
+  end
+
   it 'tracks its own state separately from the global instance' do
     Rainbow.enabled = :yep
     rainbow = Rainbow.new
