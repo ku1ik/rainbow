@@ -3,8 +3,8 @@
 require_relative 'rainbow/global'
 
 module Rainbow
-  def self.new
-    Wrapper.new(global.enabled)
+  def self.new(enabled = global.enabled)
+    Wrapper.new(enabled)
   end
 
   self.enabled = false unless STDOUT.tty? && STDERR.tty?
