@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gemspec
 
+gem "ostruct" # Used by coveralls (not part of the default gems since Ruby 4.0).
 gem 'rake'
 
 group :test do
