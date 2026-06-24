@@ -167,4 +167,11 @@ RSpec.describe 'Rainbow() wrapper' do
       expect(result).to eq('hello')
     end
   end
+
+  it 'can temporarily enabled/disabled by using the block form' do
+    Rainbow.with_enabled(false) do
+      expect(Rainbow.enabled).to eq(false)
+    end
+    expect(Rainbow.enabled).to eq(true)
+  end
 end
