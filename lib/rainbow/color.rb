@@ -21,9 +21,9 @@ module Rainbow
       when 0.class
         Indexed.new(ground, color)
       when Symbol
-        if Named.color_names.include?(color)
+        if Named::NAMES.key?(color)
           Named.new(ground, color)
-        elsif X11Named.color_names.include?(color)
+        elsif X11Named::NAMES.key?(color)
           X11Named.new(ground, color)
         else
           raise ArgumentError,
@@ -88,7 +88,7 @@ module Rainbow
       end
 
       def initialize(ground, name)
-        unless Named.color_names.include?(name)
+        unless Named::NAMES.key?(name)
           raise ArgumentError,
                 "Unknown color name, valid names: #{self.class.valid_names}"
         end
@@ -138,7 +138,7 @@ module Rainbow
       end
 
       def initialize(ground, name)
-        unless X11Named.color_names.include?(name)
+        unless X11Named::NAMES.key?(name)
           raise ArgumentError,
                 "Unknown color name, valid names: #{self.class.valid_names}"
         end
