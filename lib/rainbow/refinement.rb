@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'presenter'
-require_relative 'global'
+require_relative '../rainbow'
 
 module Rainbow
   refine String do
