@@ -21,21 +21,29 @@ module Rainbow
       when 0.class
         Indexed.new(ground, color)
       when Symbol
-        if Named.color_names.include?(color)
-          Named.new(ground, color)
-        elsif X11Named.color_names.include?(color)
-          X11Named.new(ground, color)
-        else
-          raise ArgumentError,
-                "Unknown color name, valid names: " +
-                (Named.color_names + X11Named.color_names).join(', ')
-        end
+        build_named(ground, color)
       when Array
         RGB.new(ground, *color)
       when String
         RGB.new(ground, *parse_hex_color(color))
+      else
+        raise ArgumentError, "Unsupported color definition"
       end
     end
+
+    def self.build_named(ground, color)
+      if Named.color_names.include?(color)
+        Named.new(ground, color)
+      elsif X11Named.color_names.include?(color)
+        X11Named.new(ground, color)
+      else
+        raise ArgumentError,
+              "Unknown color name, valid names: " +
+              (Named.color_names + X11Named.color_names).join(', ')
+      end
+    end
+
+    private_class_method :build_named
 
     def self.parse_hex_color(hex)
       unless hex =~ /^#?[a-f0-9]{6}/i
@@ -105,8 +113,8 @@ module Rainbow
       end
 
       def initialize(ground, *values)
-        if values.min.negative? || values.max > 255
-          raise ArgumentError, "RGB value outside 0-255 range"
+        if values.size != 3 || values.min.negative? || values.max > 255
+          raise ArgumentError, "RGB color requires exactly three values in the 0-255 range"
         end
 
         super(ground, 8)
