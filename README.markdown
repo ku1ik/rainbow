@@ -61,8 +61,7 @@ Text color can also be changed by calling a method named by a color:
 * `aliceblue`
 * `indianred`
 
-All of the methods return `self` (the presenter object) so you can chain method
-calls:
+All of the methods return a new presenter object so you can chain method calls:
 
 ```ruby
 Rainbow("hola!").blue.bright.underline
@@ -179,7 +178,7 @@ By default each new instance inherits enabled/disabled state from the global
 
 This feature comes handy for example when you have multiple output formatters
 in your application and some of them print to a terminal but others write to a
-file. Normally rainbow would detect that STDIN/STDERR is a TTY and would
+file. Normally rainbow would detect that STDOUT/STDERR is a TTY and would
 colorize all the strings, even the ones that go through file writing
 formatters. You can easily solve that by disabling coloring for the Rainbow
 instances that are used by formatters with file output.
