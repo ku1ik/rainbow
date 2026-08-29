@@ -9,7 +9,7 @@ module Rainbow
 
       # Skip extending if there are no existing control sequences.
       if string.include?("\e")
-        string = string.sub(/^(\e\[([\d;]+)m)+/) { |m| m + seq }
+        string = string.sub(/\A(\e\[[\d;:]*m)*/) { |m| m + seq }
         string += "\e[0m" unless string.end_with? "\e[0m"
         string
       else
@@ -19,7 +19,7 @@ module Rainbow
 
     def self.uncolor(string)
       # See http://www.commandlinefu.com/commands/view/3584/remove-color-codes-special-characters-with-sed
-      string.gsub(/\e\[[0-9;]*m/, '')
+      string.gsub(/\e\[[0-9;:]*m/, '')
     end
   end
 end
