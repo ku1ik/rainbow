@@ -25,6 +25,7 @@ module Rainbow
 
     alias foreground color
     alias fg color
+    alias colour color
 
     # Sets background color of this text.
     def background(*values)
