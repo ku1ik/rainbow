@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'x11_color_names'
+
 module Rainbow
   class Color
     attr_reader :ground
