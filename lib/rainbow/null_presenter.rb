@@ -79,7 +79,7 @@ module Rainbow
     end
 
     def method_missing(method_name, *args)
-      if Color::X11Named.color_names.include?(method_name) && args.empty?
+      if Color::X11Named::NAMES.key?(method_name) && args.empty?
         self
       else
         super
@@ -87,7 +87,7 @@ module Rainbow
     end
 
     def respond_to_missing?(method_name, *args)
-      Color::X11Named.color_names.include?(method_name) && args.empty? || super
+      Color::X11Named::NAMES.key?(method_name) && args.empty? || super
     end
 
     alias foreground color
