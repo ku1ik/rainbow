@@ -92,6 +92,7 @@ module Rainbow
 
     alias foreground color
     alias fg color
+    alias colour color
     alias bg background
     alias bold bright
     alias dark faint
